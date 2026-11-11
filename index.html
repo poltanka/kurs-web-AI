@@ -3,111 +3,395 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Всі можливості AI для роботи — ШІ-майстерня</title>
-  <meta name="description" content="Всі можливості AI для роботи: реальні задачі та їхні рішення. Курс для дітей 14–18 років. Сайт у розробці.">
+  <title>Курс ШІ для учнів 14–18 років — ШІ-майстерня</title>
+  <meta name="description" content="Онлайн-курс «Всі можливості AI для роботи» для учнів 14–18 років: 24 уроки в чотирьох модулях з ChatGPT, Codex і Gemini. Промпти, дані, мем-генератор, Discord-бот і власний ШІ-агент.">
+  <!-- [ДОМЕН] — заглушка, домен ще не обрано -->
+  <link rel="canonical" href="https://[ДОМЕН]/">
+  <link rel="alternate" hreflang="uk" href="https://[ДОМЕН]/">
+  <link rel="alternate" hreflang="en" href="https://[ДОМЕН]/en/">
+  <link rel="alternate" hreflang="x-default" href="https://[ДОМЕН]/">
+  <meta name="color-scheme" content="light dark">
+  <!-- Тема до завантаження стилів: без «спалаху» -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('sm-theme');
+        if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=Unbounded:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/bundle.css">
+  <!-- Спільні стилі публічних сторінок (герой, секції, сітки, CTA) -->
+  <link rel="stylesheet" href="assets/css/programa.css">
+  <link rel="icon" href="assets/img/bait-avatar.svg" type="image/svg+xml">
   <style>
-    :root {
-      --bg: #111318;
-      --surface: #ffffff;
-      --ink: #1b1d2a;
-      --ink-muted: #4a4f63;
-      --accent: #3346d3;
-      --accent-soft: #e6e9fb;
-      --line: #d9dce8;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #111318;
-        --surface: #1c1e2b;
-        --ink: #f1f2f7;
-        --ink-muted: #b4b8c9;
-        --accent: #9aa7ff;
-        --accent-soft: #262a45;
-        --line: #33364a;
-      }
-    }
+    /* Головна: форма заявки. Основний текст публічних сторінок — 18px */
+    .hero__sub { margin: 0; font: 600 var(--fs-body)/var(--lh-body) var(--font-sans); color: var(--ink-muted); }
+    .about-card { display: grid; gap: var(--space-3); align-content: start; }
+    .about-card h3 { margin: 0; }
+    .about-card p { margin: 0; font-size: var(--fs-body); line-height: var(--lh-body); }
+    .about-card .ic-lg { width: var(--icon-lg); height: var(--icon-lg); color: var(--primary); }
 
-    * { box-sizing: border-box; }
+    .apply-grid { display: grid; gap: var(--space-7); }
+    .apply-form { display: grid; gap: var(--space-5); padding: var(--space-6) var(--space-5); background: var(--surface); border: var(--stroke-1) solid var(--line); border-radius: var(--radius-lg); }
+    .apply-form .sm-field label,
+    .apply-form .sm-field legend,
+    .apply-form .sm-input,
+    .apply-form .sm-check { font-size: var(--fs-body); }
+    .apply-form .sm-field__hint { font-size: var(--fs-body-m); }
+    .apply-form .sm-err[hidden] { display: none; }
+    .apply-form .opt { font-weight: 500; color: var(--ink-muted); }
+    .apply-form .sm-check a { color: var(--primary); }
+    .apply-form .sm-btn { justify-self: start; }
+    .apply-status { margin: 0; padding: var(--space-4); border-radius: var(--radius-md); background: var(--primary-soft); font-size: var(--fs-body); line-height: var(--lh-body); }
+    .apply-status:empty { display: none; }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .apply-points { display: grid; gap: var(--space-3); margin: 0; padding: 0; list-style: none; }
+    .apply-points li { display: flex; gap: var(--space-3); align-items: flex-start; font-size: var(--fs-body); line-height: var(--lh-body); }
+    .apply-points svg { flex: none; width: var(--icon-md); height: var(--icon-md); margin-top: var(--space-1); color: var(--success); }
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 24px 16px;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: "Manrope", system-ui, sans-serif;
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    main {
-      width: 100%;
-      max-width: 720px;
-      padding: 48px 32px;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      text-align: center;
-    }
-
-    .logo {
-      margin: 0 0 24px;
-      font-family: "Unbounded", system-ui, sans-serif;
-      font-weight: 600;
-      font-size: 1.25rem;
-      color: var(--accent);
-    }
-
-    h1 {
-      margin: 0 0 16px;
-      font-family: "Unbounded", system-ui, sans-serif;
-      font-weight: 600;
-      font-size: clamp(1.5rem, 4vw, 2.25rem);
-      line-height: 1.25;
-      text-wrap: balance;
-    }
-
-    .subtitle {
-      margin: 0 0 16px;
-      font-size: 1.125rem;
-      color: var(--ink-muted);
-    }
-
-    .description {
-      max-width: 56ch;
-      margin: 0 auto 32px;
-    }
-
-    .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin: 0;
-      padding: 8px 20px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    @media (max-width: 480px) {
-      main { padding: 32px 20px; }
+    @media (min-width: 1024px) {
+      .apply-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: start; }
+      .apply-form { padding: var(--space-7); }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Всі можливості AI для роботи: реальні задачі та їхні рішення",
+    "description": "Онлайн-курс для учнів 14–18 років: ChatGPT, Codex і Gemini на практиці. 24 уроки в чотирьох модулях, наскрізний проєкт — власний ШІ-агент.",
+    "inLanguage": "uk",
+    "audience": { "@type": "EducationalAudience", "educationalRole": "student", "audienceType": "Учні 14–18 років" },
+    "provider": { "@type": "Organization", "name": "ШІ-майстерня", "url": "https://[ДОМЕН]/" }
+  }
+  </script>
 </head>
 <body>
-  <main>
-    <p class="logo">ШІ-майстерня</p>
-    <h1>Всі можливості AI для роботи: реальні задачі та їхні рішення</h1>
-    <p class="subtitle">24 уроки в чотирьох модулях</p>
-    <p class="subtitle">Курс для дітей 14–18 років</p>
-    <p class="description">Онлайн-курс навчає працювати з ChatGPT, Codex і Gemini: писати ефективні промпти, кодити з AI, критично перевіряти його відповіді та створювати власні продукти. 4 модулі, 24 заняття, практика — у самих сервісах, з комп’ютера чи телефона.</p>
-    <p class="status"><span aria-hidden="true">🛠</span> Сайт у розробці</p>
-  </main>
+
+<!-- Іконки (декоративні) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-robot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9.5 17h5"/></symbol>
+    <symbol id="i-pencil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></symbol>
+    <symbol id="i-login" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  </defs>
+</svg>
+
+<a class="sm-skip" href="#main">Перейти до основного вмісту</a>
+
+<header class="sm-header">
+  <div class="sm-wrap sm-header__in">
+    <a class="sm-logo" href="/" aria-current="page">ШІ-майстерня</a>
+    <nav class="sm-nav" aria-label="Основне меню">
+      <a href="#about">Про курс</a>
+      <a href="/programa/">Програма</a>
+      <a href="/dlia-batkiv/">Для батьків</a>
+      <a href="/dlia-vchyteliv/">Для вчителів</a>
+      <a href="/faq/">FAQ</a>
+    </nav>
+    <div class="sm-header__tools">
+      <nav class="sm-seg" aria-label="Мова">
+        <a href="/" hreflang="uk" lang="uk" aria-current="true">УКР</a>
+        <a href="/en/" hreflang="en" lang="en">EN</a>
+      </nav>
+      <button class="sm-icon-btn theme-btn" type="button" aria-pressed="false" aria-label="Темна тема">
+        <svg class="ic-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+        <svg class="ic-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
+      <a class="sm-btn sm-btn--secondary" href="/login/">
+        <svg aria-hidden="true"><use href="#i-login"/></svg><span class="login-label">Увійти</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===== ГЕРОЙ ===== -->
+  <section class="hero" aria-labelledby="page-title">
+    <div class="sm-wrap">
+      <div class="hero__grid">
+        <div class="hero__text">
+          <p class="sm-hero-badge"><svg aria-hidden="true"><use href="#i-spark"/></svg>Онлайн-курс · 14–18 років</p>
+          <h1 id="page-title" class="ty-h1">Всі можливості AI для роботи: реальні задачі та їхні рішення</h1>
+          <p class="hero__sub">24 уроки в чотирьох модулях</p>
+          <p class="ty-lead hero__lead">Онлайн-курс навчає працювати з ChatGPT, Codex і Gemini: писати ефективні промпти, кодити з AI, критично перевіряти його відповіді та створювати власні продукти. Практика — у самих сервісах, з комп’ютера чи телефона.</p>
+
+          <dl class="facts">
+            <div><dt>модулі</dt><dd>4</dd></div>
+            <div><dt>уроки</dt><dd>24</dd></div>
+            <div><dt>власний ШІ-агент</dt><dd>1</dd></div>
+          </dl>
+
+          <div class="hero__cta">
+            <a class="sm-btn sm-btn--accent sm-btn--lg" href="#apply">Залишити заявку</a>
+            <a class="sm-btn sm-btn--secondary sm-btn--lg" href="/programa/">Програма курсу<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+          <p class="ty-cap">Перші два уроки — демо, їх можна пройти без входу.</p>
+        </div>
+
+        <div class="hero__art">
+          <div class="hero__mascot">
+            <svg viewBox="-14 -28 228 292" role="img" aria-label="Єнот Байт, маскот курсу, працює за ноутбуком"><ellipse cx="100" cy="246" rx="60" ry="6" fill="#14161c" opacity="0.18"/><path d="M138 206 C186 214 198 150 170 112" fill="none" stroke="#9aa0ab" stroke-width="24" stroke-linecap="round"/><path d="M138 206 C186 214 198 150 170 112" fill="none" stroke="#2a2d36" stroke-width="24" stroke-dasharray="9 17" stroke-dashoffset="-6"/><path d="M84 196 L84 228" fill="none" stroke="#9aa0ab" stroke-width="17" stroke-linecap="round"/><ellipse cx="82" cy="236" rx="13" ry="7" fill="#2a2d36"/><path d="M116 196 L116 228" fill="none" stroke="#9aa0ab" stroke-width="17" stroke-linecap="round"/><ellipse cx="118" cy="236" rx="13" ry="7" fill="#2a2d36"/><ellipse cx="100" cy="166" rx="42" ry="50" fill="#9aa0ab"/><ellipse cx="100" cy="174" rx="26" ry="36" fill="#f4f4ef"/><g transform="translate(52 34) scale(1.5)"><path d="M11 28 L13 7 L29 18 Z" fill="#7d838f" stroke="#7d838f" stroke-width="3" stroke-linejoin="round"/><path d="M53 28 L51 7 L35 18 Z" fill="#7d838f" stroke="#7d838f" stroke-width="3" stroke-linejoin="round"/><path d="M16 23 L17 13 L24 18.5 Z" fill="#2a2d36" stroke="#2a2d36" stroke-width="2" stroke-linejoin="round"/><path d="M48 23 L47 13 L40 18.5 Z" fill="#2a2d36" stroke="#2a2d36" stroke-width="2" stroke-linejoin="round"/><path d="M7 37 C7 23 19 15 32 15 C45 15 57 23 57 37 C57 49 46 57 32 57 C18 57 7 49 7 37 Z" fill="#9aa0ab"/><path d="M13 39 C18 35 26 35 32 41 C38 35 46 35 51 39 C49 50 41 55 32 55 C23 55 15 50 13 39 Z" fill="#f4f4ef"/><ellipse cx="21.5" cy="25" rx="6.5" ry="2.6" fill="#f4f4ef"/><ellipse cx="42.5" cy="25" rx="6.5" ry="2.6" fill="#f4f4ef"/><path d="M9 34 C11 28 18 27 24 29 C28 30 30 32 32 32 C34 32 36 30 40 29 C46 27 53 28 55 34 C53 39 46 41 40 39 C36 38 34 36 32 36 C30 36 28 38 24 39 C18 41 11 39 9 34 Z" fill="#2a2d36"/><circle cx="21.5" cy="33" r="3.4" fill="#f4f4ef"/><circle cx="42.5" cy="33" r="3.4" fill="#f4f4ef"/><circle cx="22.3" cy="33.4" r="1.9" fill="#14161c"/><circle cx="43.3" cy="33.4" r="1.9" fill="#14161c"/><ellipse cx="32" cy="43" rx="3.6" ry="2.6" fill="#14161c"/><path d="M28.5 47.5 Q32 50.5 35.5 47.5" fill="none" stroke="#14161c" stroke-width="1.8" stroke-linecap="round"/></g><path d="M66 148 Q40 160 46 176" fill="none" stroke="#9aa0ab" stroke-width="15" stroke-linecap="round"/><path d="M134 148 Q160 160 154 176" fill="none" stroke="#9aa0ab" stroke-width="15" stroke-linecap="round"/><rect x="38" y="118" width="124" height="86" rx="8" fill="#2a2d36" stroke="#14161c" stroke-width="3"/><rect x="46" y="126" width="108" height="64" rx="3" fill="#14161c"/><text x="52" y="146" font-family="JetBrains Mono,monospace" font-size="13" font-weight="600" fill="#c5f13a">&gt;_ prompt</text><rect x="52" y="154" width="72" height="5" rx="2.5" fill="#7d838f"/><rect x="52" y="164" width="92" height="5" rx="2.5" fill="#7d838f"/><rect x="52" y="174" width="50" height="5" rx="2.5" fill="#7d838f"/><rect x="92" y="204" width="16" height="12" fill="#7d838f"/><rect x="74" y="214" width="52" height="8" rx="4" fill="#7d838f"/><circle cx="44" cy="178" r="8.5" fill="#2a2d36"/><circle cx="156" cy="178" r="8.5" fill="#2a2d36"/></svg>
+          </div>
+          <aside class="bubble" aria-label="Підказка Байта">
+            <p class="sm-kicker">Підказка Байта</p>
+            <p class="ty-body">Привіт, я Байт! За курс ти збереш власного ШІ-агента — від першого промпту до Discord-бота.</p>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ПРО КУРС ===== -->
+  <section id="about" class="sec sec--surface" aria-labelledby="about-title">
+    <div class="sm-wrap">
+      <div class="sec-head">
+        <h2 id="about-title" class="ty-h2">Про курс</h2>
+        <p class="ty-lead">Вчимося не «про ШІ», а разом із ним: на реальних задачах, які цікаві підліткам, — від мемів і музичних чартів до власного бота.</p>
+      </div>
+      <ul class="grid grid--2">
+        <li class="sm-card about-card">
+          <svg class="ic-lg" aria-hidden="true"><use href="#i-pencil"/></svg>
+          <h3 class="ty-h3">Промпти, які працюють</h3>
+          <p>П’ятиелементна модель запиту: роль, ціль, контекст, формат, обмеження. Учні переписують слабкі запити й бачать, що саме змінило результат.</p>
+        </li>
+        <li class="sm-card about-card">
+          <svg class="ic-lg" aria-hidden="true"><use href="#i-eye"/></svg>
+          <h3 class="ty-h3">Критичне мислення</h3>
+          <p>Перевіряємо відповіді ШІ, розбираємо дані й ловимо фейкові висновки та маніпулятивні графіки.</p>
+        </li>
+        <li class="sm-card about-card">
+          <svg class="ic-lg" aria-hidden="true"><use href="#i-robot"/></svg>
+          <h3 class="ty-h3">Власний ШІ-агент</h3>
+          <p>Наскрізний проєкт: кожен крок за кроком будує агента з характером, знаннями й правилами — і в кінці запускає його як Discord-бота.</p>
+        </li>
+        <li class="sm-card about-card">
+          <svg class="ic-lg" aria-hidden="true"><use href="#i-shield"/></svg>
+          <h3 class="ty-h3">Безпечно</h3>
+          <p>Агенти не питають особистих даних і чесно кажуть «не знаю». Опитування анонімні, а розмови бота класу бачить викладач.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== МОДУЛІ ===== -->
+  <section class="sec sec--line" aria-labelledby="modules-title">
+    <div class="sm-wrap">
+      <div class="sec-head">
+        <h2 id="modules-title" class="ty-h2">4 модулі — 4 частини «ШІ-студії»</h2>
+        <p class="ty-lead muted">За курс клас створює власну цифрову студію: мем-генератор, Discord-бота класу і сайт, на якому все це живе.</p>
+      </div>
+      <ul class="grid grid--2">
+        <li>
+          <article class="sm-module" aria-labelledby="ov-m1">
+            <div class="sm-module__top"><p class="sm-kicker"><span class="mod-num" aria-hidden="true">1</span>Модуль 1</p></div>
+            <h3 class="sm-module__title" id="ov-m1">Мемолог</h3>
+            <p class="sm-module__lead">Тексти, меми й лор класу. Вчимося писати запити, які дають смішний і точний результат.</p>
+            <ul class="sm-module__tools" aria-label="Сервіси модуля"><li class="sm-tool">ChatGPT</li><li class="sm-tool">Gemini</li></ul>
+            <a class="mod-link" href="/programa/#modul-1">Уроки модуля 1<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+        </li>
+        <li>
+          <article class="sm-module" aria-labelledby="ov-m2">
+            <div class="sm-module__top"><p class="sm-kicker"><span class="mod-num" aria-hidden="true">2</span>Модуль 2</p></div>
+            <h3 class="sm-module__title" id="ov-m2">Цифри за хайпом</h3>
+            <p class="sm-module__lead">Таблиці, графіки й чесні висновки. Вчимося розбирати дані й ловити фейкові висновки.</p>
+            <ul class="sm-module__tools" aria-label="Сервіси модуля"><li class="sm-tool">ChatGPT</li><li class="sm-tool">Google Таблиці</li><li class="sm-tool">Google Форми</li><li class="sm-tool">Gemini</li></ul>
+            <a class="mod-link" href="/programa/#modul-2">Уроки модуля 2<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+        </li>
+        <li>
+          <article class="sm-module" aria-labelledby="ov-m3">
+            <div class="sm-module__top"><p class="sm-kicker"><span class="mod-num" aria-hidden="true">3</span>Модуль 3</p></div>
+            <h3 class="sm-module__title" id="ov-m3">Мем-фабрика</h3>
+            <p class="sm-module__lead">ТЗ, дизайн-система, шрифти й доступність. Збираємо власний мем-генератор з українськими шрифтами.</p>
+            <ul class="sm-module__tools" aria-label="Сервіси модуля"><li class="sm-tool">Canvas у ChatGPT або Gemini</li><li class="sm-tool">Google Fonts</li><li class="sm-tool">WebAIM</li></ul>
+            <a class="mod-link" href="/programa/#modul-3">Уроки модуля 3<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+        </li>
+        <li>
+          <article class="sm-module" aria-labelledby="ov-m4">
+            <div class="sm-module__top"><p class="sm-kicker"><span class="mod-num" aria-hidden="true">4</span>Модуль 4</p></div>
+            <h3 class="sm-module__title" id="ov-m4">Ботовод</h3>
+            <p class="sm-module__lead">Discord-бот класу і сайт з Codex. Запускаємо бота й сайт разом з агентом для коду.</p>
+            <ul class="sm-module__tools" aria-label="Сервіси модуля"><li class="sm-tool">Codex</li><li class="sm-tool">Python</li><li class="sm-tool">Discord</li><li class="sm-tool">GitHub Pages</li></ul>
+            <a class="mod-link" href="/programa/#modul-4">Уроки модуля 4<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== ЗАЯВКА ===== -->
+  <section id="apply" class="sec sec--surface" aria-labelledby="apply-title">
+    <div class="sm-wrap apply-grid">
+      <div class="sec-head">
+        <p class="sm-kicker">Заявка</p>
+        <h2 id="apply-title" class="ty-h2">Залишити заявку на курс</h2>
+        <p class="ty-lead">Заявка надійде організаторам курсу на пошту. Заповнити її може учень або один із батьків.</p>
+        <ul class="apply-points">
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Для учнів 14–18 років</li>
+          <li><svg aria-hidden="true"><use href="#i-monitor"/></svg>Онлайн, з комп’ютера чи телефона</li>
+          <li><svg aria-hidden="true"><use href="#i-eye"/></svg>Перші два уроки можна спробувати без входу</li>
+        </ul>
+      </div>
+
+      <!-- Обробник — inc/application-form.php у темі WordPress (nonce, honeypot, вік 14–18, wp_mail на [EMAIL ДЛЯ ЗАЯВОК]) -->
+      <form class="apply-form" id="apply-form" method="post" action="" novalidate>
+        <div class="sm-field">
+          <label for="f-name">Ім’я учня</label>
+          <input class="sm-input" id="f-name" name="student_name" type="text" autocomplete="given-name" required aria-describedby="f-name-err">
+          <p class="sm-err" id="f-name-err" hidden>Вкажіть ім’я учня.</p>
+        </div>
+
+        <div class="sm-field">
+          <label for="f-age">Вік учня</label>
+          <select class="sm-input" id="f-age" name="student_age" required aria-describedby="f-age-hint f-age-err">
+            <option value="">Оберіть вік</option>
+            <option>14</option>
+            <option>15</option>
+            <option>16</option>
+            <option>17</option>
+            <option>18</option>
+          </select>
+          <p class="sm-field__hint" id="f-age-hint">Курс розрахований на учнів 14–18 років.</p>
+          <p class="sm-err" id="f-age-err" hidden>Оберіть вік учня.</p>
+        </div>
+
+        <div class="sm-field">
+          <label for="f-email">Email для зв’язку</label>
+          <input class="sm-input" id="f-email" name="contact_email" type="email" autocomplete="email" inputmode="email" required aria-describedby="f-email-hint f-email-err">
+          <p class="sm-field__hint" id="f-email-hint">Сюди організатори напишуть відповідь. Можна вказати пошту батьків.</p>
+          <p class="sm-err" id="f-email-err" hidden>Вкажіть email у форматі name@example.com.</p>
+        </div>
+
+        <div class="sm-field">
+          <label for="f-school">Школа і клас <span class="opt">(необов’язково)</span></label>
+          <input class="sm-input" id="f-school" name="school" type="text" autocomplete="organization">
+        </div>
+
+        <div class="sm-field">
+          <label for="f-msg">Питання або коментар <span class="opt">(необов’язково)</span></label>
+          <textarea class="sm-input" id="f-msg" name="message" rows="4" maxlength="1000"></textarea>
+        </div>
+
+        <!-- Пастка для ботів: людина це поле не бачить -->
+        <div class="hp" aria-hidden="true">
+          <label for="f-website">Не заповнюйте це поле</label>
+          <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="sm-field">
+          <label class="sm-check" for="f-consent">
+            <input id="f-consent" name="consent" type="checkbox" required aria-describedby="f-consent-err">
+            <span class="sm-check__text">Погоджуюся з <a href="/polityka/">політикою конфіденційності</a> та <a href="/umovy/">умовами використання</a></span>
+          </label>
+          <p class="sm-err" id="f-consent-err" hidden>Без згоди ми не можемо прийняти заявку.</p>
+        </div>
+
+        <button class="sm-btn sm-btn--accent sm-btn--lg" type="submit">Надіслати заявку</button>
+        <p class="apply-status" id="apply-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="sm-footer">
+  <div class="sm-wrap sm-footer__in">
+    <div class="sm-footer__brand">
+      <div class="sm-avatar sm-avatar--mascot sm-avatar--lg" aria-hidden="true"><img src="assets/img/bait-avatar.svg" alt="" width="56" height="56"></div>
+      <div>
+        <p class="sm-logo">ШІ-майстерня</p>
+        <p class="sm-footer__tag">Освітній сайт про ChatGPT, Codex і Gemini для учнів 14–18 років</p>
+      </div>
+    </div>
+    <nav aria-label="Нижня навігація">
+      <ul class="sm-footer__links">
+        <li><a href="#about">Про курс</a></li>
+        <li><a href="/programa/">Програма</a></li>
+        <li><a href="#apply">Заявка</a></li>
+      </ul>
+    </nav>
+    <ul class="sm-footer__links" aria-label="Допомога">
+      <li><a href="/dlia-batkiv/">Для батьків</a></li>
+      <li><a href="/faq/">FAQ</a></li>
+      <li><a href="/kontakty/">Контакти</a></li>
+    </ul>
+    <ul class="sm-footer__links" aria-label="Документи">
+      <li><a href="/polityka/">Політика конфіденційності</a></li>
+      <li><a href="/umovy/">Умови використання</a></li>
+    </ul>
+  </div>
+  <div class="sm-wrap sm-footer__copy">© 2026 ШІ-майстерня</div>
+</footer>
+
+<script>
+  // Перемикач теми: початкова — за налаштуваннями пристрою, вибір запам'ятовується
+  (function () {
+    var root = document.documentElement;
+    var btn = document.querySelector('.theme-btn');
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    function isDark() {
+      var t = root.getAttribute('data-theme');
+      return t ? t === 'dark' : mq.matches;
+    }
+    function sync() {
+      var dark = isDark();
+      btn.setAttribute('aria-pressed', String(dark));
+      btn.setAttribute('aria-label', dark ? 'Світла тема' : 'Темна тема');
+    }
+    btn.addEventListener('click', function () {
+      var next = isDark() ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('sm-theme', next); } catch (e) {}
+      sync();
+    });
+    if (mq.addEventListener) mq.addEventListener('change', sync);
+    sync();
+  })();
+
+  // Форма заявки: перевірка полів. Надсилання підключимо в темі WordPress
+  (function () {
+    var form = document.getElementById('apply-form');
+    var status = document.getElementById('apply-status');
+    var fields = [
+      { el: form.elements.student_name, err: 'f-name-err', ok: function (v) { return v.trim() !== ''; } },
+      { el: form.elements.student_age, err: 'f-age-err', ok: function (v) { var n = +v; return n >= 14 && n <= 18; } },
+      { el: form.elements.contact_email, err: 'f-email-err', ok: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); } },
+      { el: form.elements.consent, err: 'f-consent-err', ok: function () { return form.elements.consent.checked; } }
+    ];
+    function check(f) {
+      var valid = f.ok(f.el.value);
+      f.el.setAttribute('aria-invalid', String(!valid));
+      document.getElementById(f.err).hidden = valid;
+      return valid;
+    }
+    fields.forEach(function (f) {
+      f.el.addEventListener('change', function () { if (f.el.getAttribute('aria-invalid')) check(f); });
+    });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var firstBad = null;
+      fields.forEach(function (f) { if (!check(f) && !firstBad) firstBad = f.el; });
+      if (firstBad) { status.textContent = ''; firstBad.focus(); return; }
+      status.textContent = 'Дякуємо! Форма поки працює в демо-режимі, тому заявку не надіслано. Надсилання на пошту підключимо разом із сайтом на WordPress.';
+    });
+  })();
+</script>
 </body>
 </html>
