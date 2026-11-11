@@ -1,0 +1,247 @@
+/* ШІ-майстерня — сторінка «Програма курсу».
+   Лише токени з tokens.css і компоненти з bundle.css (класи sm- не перейменовано).
+   Mobile-first: базові стилі для телефона, далі @media (min-width: 768px / 1024px). */
+
+/* ===== База ===== */
+html { scroll-padding-top: var(--space-5); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 var(--fs-body)/var(--lh-body) var(--font-sans);
+  -webkit-text-size-adjust: 100%;
+}
+*, *::before, *::after { box-sizing: border-box; }
+img, svg { max-width: 100%; }
+a { color: var(--primary); text-underline-offset: var(--space-half); }
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: var(--focus-width) solid var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+.ic { width: var(--icon-md); height: var(--icon-md); flex: none; }
+.muted { color: var(--ink-muted); }
+.visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* Кнопка-посилання й логотип не беруть колір звичайного посилання */
+a.sm-btn--accent { color: var(--on-accent); }
+a.sm-btn--secondary { color: var(--primary); }
+a.sm-btn--secondary:active { color: var(--on-primary); }
+a.sm-btn { text-decoration: none; }
+
+/* ===== Типографіка: мобільна шкала, далі десктопна ===== */
+.ty-h1 { margin: 0; font: 700 calc(var(--fs-h4) + var(--space-2))/calc(var(--lh-h3) + var(--space-half)) var(--font-display); letter-spacing: var(--tracking-tight); text-wrap: balance; }
+.ty-h2 { margin: 0; font: 600 var(--fs-h3)/calc(var(--lh-h4) + var(--space-half)) var(--font-display); letter-spacing: var(--tracking-tight); text-wrap: balance; }
+.ty-h3 { margin: 0; font: 600 var(--fs-h4)/var(--lh-h4) var(--font-display); }
+.ty-lead { margin: 0; font-size: var(--fs-body); line-height: var(--lh-body); }
+.ty-cap { margin: 0; font: 500 var(--fs-caption)/var(--lh-caption) var(--font-sans); color: var(--ink-muted); }
+
+@media (min-width: 768px) {
+  body { font-size: var(--fs-body); line-height: var(--lh-body); }
+  .ty-lead { font-size: var(--fs-body); line-height: var(--lh-body); }
+}
+@media (min-width: 1024px) {
+  .ty-h1 { font-size: calc(var(--fs-h3) + var(--space-5)); line-height: calc(var(--lh-h3) + var(--space-5)); letter-spacing: -0.015em; }
+  .ty-h2 { font-size: var(--space-6); line-height: calc(var(--space-6) + var(--space-2)); }
+  .ty-h3 { font-size: var(--fs-h3); line-height: var(--lh-h3); }
+  .ty-lead { font-size: var(--fs-h4); line-height: var(--lh-h3); }
+}
+
+/* ===== Секції ===== */
+.sec { padding-block: var(--space-8); }
+.sec--line { border-top: var(--stroke-1) solid var(--line); }
+.sec--surface { background: var(--surface); }
+.sec-head { display: grid; gap: var(--space-3); max-width: var(--prose-max); margin-bottom: var(--space-6); }
+@media (min-width: 1024px) { .sec { padding-block: var(--space-9); } }
+
+.grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-5); margin: 0; padding: 0; list-style: none; }
+@media (min-width: 768px) {
+  .grid { gap: var(--space-6); }
+  .grid--2, .grid--3, .grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* ===== Шапка: публічна частина без липкості (WCAG 2.4.11) ===== */
+.sm-header .sm-nav a { color: var(--ink); }
+.sm-header .sm-nav a:hover, .sm-header .sm-nav a[aria-current="page"] { color: var(--primary); }
+.sm-header a.sm-logo { color: var(--ink); }
+.sm-header a.sm-logo:hover { color: var(--primary); }
+.theme-btn .ic-sun { display: none; }
+.theme-btn[aria-pressed="true"] .ic-sun { display: block; }
+.theme-btn[aria-pressed="true"] .ic-moon { display: none; }
+@media (max-width: 479px) {
+  .login-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+}
+
+/* ===== Герой ===== */
+.hero { padding-block: var(--space-5) var(--space-8); }
+.hero__grid { display: grid; gap: var(--space-7); align-items: center; }
+.hero__text { display: grid; gap: var(--space-5); justify-items: start; }
+.hero__course { margin: 0; font: 600 var(--fs-body)/var(--lh-body) var(--font-display); color: var(--primary); text-wrap: balance; }
+.hero__lead { max-width: var(--prose-max); }
+.hero__cta { display: flex; flex-wrap: wrap; gap: var(--space-3); width: 100%; }
+.hero__art { position: relative; display: grid; justify-items: center; gap: var(--space-4); }
+.hero__mascot { width: calc(var(--space-9) * 2); max-width: 100%; }
+.hero__mascot svg { display: block; width: 100%; height: auto; }
+.bubble {
+  position: relative; max-width: calc(var(--space-9) * 3.5);
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface); color: var(--ink);
+  border: var(--stroke-2) solid var(--line-strong);
+  border-radius: var(--radius-lg); border-top-left-radius: var(--radius-sm);
+}
+.bubble p { margin: 0; }
+.bubble .ty-body { margin-top: var(--space-1); font-size: var(--fs-body); line-height: var(--lh-body); }
+
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-3); width: 100%; margin: 0; padding: 0; }
+.facts div { display: grid; gap: var(--space-1); padding: var(--space-3); background: var(--surface); border: var(--stroke-1) solid var(--line); border-radius: var(--radius-md); }
+.facts dt { order: 2; font: 500 var(--fs-caption)/var(--lh-caption) var(--font-sans); color: var(--ink-muted); }
+.facts dd { order: 1; margin: 0; font: 700 var(--fs-h3)/var(--lh-h3) var(--font-display); color: var(--ink); }
+
+@media (max-width: 767px) {
+  .hero__cta .sm-btn { width: 100%; }
+}
+@media (min-width: 768px) {
+  .hero__mascot { width: calc(var(--space-9) * 2.5); }
+}
+@media (min-width: 1024px) {
+  .hero { padding-block: var(--space-7) var(--space-9); }
+  .hero__grid { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: var(--space-7); }
+  .hero__mascot { width: calc(var(--space-9) * 3); }
+  .facts { max-width: calc(var(--space-9) * 6); }
+}
+
+/* ===== Огляд модулів ===== */
+.sm-module { height: 100%; }
+.sm-module__top .sm-ver { background: var(--surface); }
+.mod-link { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--target-min); font: 600 var(--fs-body)/var(--lh-label) var(--font-sans); color: var(--primary); }
+.mod-link svg { width: var(--icon-md); height: var(--icon-md); flex: none; }
+.mod-num {
+  display: inline-grid; place-items: center;
+  width: var(--size-md); height: var(--size-md);
+  border-radius: var(--radius-pill);
+  background: var(--accent); color: var(--on-accent);
+  border: var(--stroke-2) solid var(--cta-edge);
+  font: 700 var(--fs-h4)/1 var(--font-display);
+}
+
+/* ===== Наскрізний проєкт: агент ===== */
+.agent-steps { counter-reset: none; }
+.agent-step { display: flex; flex-direction: column; gap: var(--space-3); }
+.agent-step dl { display: grid; gap: var(--space-3); margin: 0; }
+.agent-step dt { font: 600 var(--fs-caption)/var(--lh-caption) var(--font-sans); color: var(--ink-muted); }
+.agent-step dd { margin: var(--space-half) 0 0; font-size: var(--fs-body); line-height: var(--lh-body); }
+.agent-step .where { margin-top: auto; padding: var(--space-2) var(--space-3); background: var(--primary-soft); border-radius: var(--radius-md); }
+
+.versions { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
+.versions li { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--target-min); padding: var(--space-1) var(--space-3); background: var(--surface); border: var(--stroke-1) solid var(--line-strong); border-radius: var(--radius-pill); font: 500 var(--fs-caption)/var(--lh-caption) var(--font-sans); color: var(--ink-muted); }
+.versions b { font: 700 var(--fs-caption)/var(--lh-caption) var(--font-mono); color: var(--primary); }
+.versions li.is-final { border: var(--stroke-2) solid var(--primary); background: var(--primary-soft); color: var(--ink); }
+
+.agent-rules { margin: 0; padding-left: var(--space-5); display: grid; gap: var(--space-2); }
+
+.topics { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
+.topics li { display: inline-flex; align-items: center; min-height: var(--size-sm); padding: 0 var(--space-4); border: var(--stroke-1) solid var(--line-strong); border-radius: var(--radius-pill); background: var(--surface); font: 600 var(--fs-body)/var(--lh-label) var(--font-sans); }
+
+/* ===== Модуль: заняття + бокова колонка ===== */
+.mod-head { display: grid; gap: var(--space-3); max-width: var(--prose-max); margin-bottom: var(--space-6); }
+.mod-head .sm-kicker { gap: var(--space-3); }
+.mod-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-6); align-items: start; }
+@media (min-width: 1024px) {
+  .mod-layout { grid-template-columns: minmax(0, 1fr) calc(var(--space-6) * 10); gap: var(--space-7); }
+  .mod-side { position: sticky; top: var(--space-5); }
+}
+
+.mod-side { display: grid; gap: var(--space-4); }
+.mod-side h3 { margin: 0 0 var(--space-3); font: 600 var(--fs-h4)/var(--lh-h4) var(--font-display); }
+.mod-side dl { display: grid; gap: var(--space-4); margin: 0; }
+.mod-side dt { font: 600 var(--fs-caption)/var(--lh-caption) var(--font-sans); color: var(--ink-muted); }
+.mod-side dd { margin: var(--space-1) 0 0; font-size: var(--fs-body); line-height: var(--lh-body); }
+.mod-side .sm-module__result { margin: 0; }
+
+/* Список занять — акордеон системи (нативні details/summary) */
+.lessons { list-style: none; max-width: none; }
+.lesson > .sm-acc__q { align-items: flex-start; gap: var(--space-3); padding: var(--space-3) var(--space-3); }
+.lesson > .sm-acc__q > svg { margin-top: var(--space-3); }
+.l-num {
+  flex: none; display: grid; place-items: center;
+  min-width: var(--size-md); height: var(--size-md); padding-inline: var(--space-2);
+  border-radius: var(--radius-pill);
+  background: var(--primary-soft); color: var(--primary);
+  font: 700 var(--fs-body)/1 var(--font-display);
+  white-space: nowrap;
+}
+.lesson[open] .l-num { background: var(--primary); color: var(--on-primary); }
+.lesson--extra .l-num { background: var(--surface); border: var(--stroke-2) dashed var(--primary); }
+.lesson--extra { border-style: dashed; border-color: var(--line-strong); }
+.lesson--extra[open] { border-style: dashed; }
+.l-txt { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--space-1); }
+.l-kick { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-2); font: 600 var(--fs-caption)/var(--lh-caption) var(--font-sans); color: var(--ink-muted); }
+.l-title { margin: 0; font: 600 var(--fs-body)/var(--lh-label) var(--font-display); color: inherit; text-wrap: pretty; }
+.lesson .sm-acc__a { padding: 0 var(--space-3) var(--space-4); font-size: var(--fs-body); line-height: var(--lh-body); }
+.lesson .sm-sec { max-width: none; }
+.lesson .sm-sec__label { font-size: var(--fs-body); }
+.lesson .sm-sec__body { font-size: var(--fs-body); line-height: var(--lh-body); }
+.l-extras { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin-top: var(--space-4); }
+.l-note { display: flex; align-items: flex-start; gap: var(--space-2); margin: var(--space-4) 0 0; font: 500 var(--fs-caption)/var(--lh-caption) var(--font-sans); color: var(--ink-muted); }
+.l-note svg { width: var(--icon-sm); height: var(--icon-sm); flex: none; margin-top: var(--space-half); color: var(--primary); }
+.l-note b { color: var(--ink); }
+.sm-desktop { margin: 0; }
+
+@media (min-width: 768px) {
+  .lesson > .sm-acc__q { padding: var(--space-4) var(--space-5); gap: var(--space-4); }
+  .lesson .sm-acc__a { padding: 0 var(--space-5) var(--space-5); }
+  .l-title { font-size: var(--fs-body); line-height: var(--lh-body); }
+  .lesson .sm-sec__body { font-size: var(--fs-body); line-height: var(--lh-body); }
+}
+@media (min-width: 1024px) {
+  .l-title { font-size: var(--fs-h4); line-height: var(--lh-h4); }
+}
+
+/* Правило курсу всередині модуля */
+.mod-rule { margin-top: var(--space-5); }
+
+/* ===== Сервіси ===== */
+.sm-service { height: 100%; }
+.svc-note { max-width: var(--prose-max); margin-top: var(--space-5); }
+
+/* ===== Правила ===== */
+.rules-grid { display: grid; gap: var(--space-5); align-items: start; }
+@media (min-width: 1024px) { .rules-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6); } }
+.rules-list { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--space-3); }
+.rules-list li { display: flex; gap: var(--space-3); align-items: flex-start; }
+.rules-list svg { width: var(--icon-lg); height: var(--icon-lg); flex: none; color: var(--primary); }
+.sm-card h3 { margin: 0 0 var(--space-4); }
+.sm-hint { margin-top: var(--space-6); }
+
+/* ===== Фінальний заклик ===== */
+.cta { display: grid; gap: var(--space-5); justify-items: start; padding: var(--space-6) var(--space-5); background: var(--primary-soft); border: var(--stroke-2) solid var(--primary); border-radius: var(--radius-lg); }
+.cta .hero__cta { width: 100%; }
+@media (min-width: 1024px) {
+  .cta { grid-template-columns: minmax(0, 1fr) auto; align-items: center; padding: var(--space-7); }
+  .cta .hero__cta { width: auto; }
+}
+
+/* ===== Підвал ===== */
+.sm-footer { margin-top: 0; }
+.sm-footer .sm-logo { margin: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+@media print {
+  .sm-header__tools, .hero__art, .cta, .sm-skip { display: none; }
+  .lesson .sm-acc__a { display: block; }
+}
+
+.nw { white-space: nowrap; }
+
+/* ===== Аудиторія 40+: основний текст компонентів не менше 18px на всіх ширинах (рішення 10.11.2026).
+   Токени й bundle.css не змінюємо — перевизначаємо лише на публічній сторінці. ===== */
+.sm-module__lead,
+.sm-module__result,
+.sm-service__role,
+.sm-rule__text,
+.sm-hint__text { font-size: var(--fs-body); line-height: var(--lh-body); }

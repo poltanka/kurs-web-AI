@@ -1,0 +1,912 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Програма курсу ШІ для учнів 14–18 років — ШІ-майстерня</title>
+  <meta name="description" content="Програма курсу «Всі можливості AI для роботи» для учнів 14–18 років: 4 модулі й 24 заняття з ChatGPT, Codex і Gemini — від промптів і даних до Discord-бота та власного ШІ-агента.">
+  <!-- [ДОМЕН] — заглушка, домен ще не обрано -->
+  <link rel="canonical" href="https://[ДОМЕН]/programa/">
+  <link rel="alternate" hreflang="uk" href="https://[ДОМЕН]/programa/">
+  <link rel="alternate" hreflang="en" href="https://[ДОМЕН]/en/curriculum/">
+  <link rel="alternate" hreflang="x-default" href="https://[ДОМЕН]/programa/">
+  <meta name="color-scheme" content="light dark">
+  <!-- Тема до завантаження стилів: без «спалаху» -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('sm-theme');
+        if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/bundle.css">
+  <link rel="stylesheet" href="assets/css/programa.css">
+  <link rel="icon" href="assets/img/bait-avatar.svg" type="image/svg+xml">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Всі можливості AI для роботи: реальні задачі та їхні рішення",
+    "description": "Онлайн-курс для учнів 14–18 років: ChatGPT, Codex і Gemini на практиці. 4 модулі, 24 заняття, наскрізний проєкт — власний ШІ-агент.",
+    "inLanguage": "uk",
+    "audience": { "@type": "EducationalAudience", "educationalRole": "student", "audienceType": "Учні 14–18 років" },
+    "provider": { "@type": "Organization", "name": "ШІ-майстерня", "url": "https://[ДОМЕН]/" },
+    "teaches": ["Промпти", "Аналіз даних з ШІ", "Перевірка фактів", "Програмування з ШІ-агентом", "Цифрова безпека"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Головна", "item": "https://[ДОМЕН]/" },
+      { "@type": "ListItem", "position": 2, "name": "Програма курсу" }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<!-- Іконки (декоративні) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></symbol>
+    <symbol id="i-pencil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+    <symbol id="i-robot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9.5 17h5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></symbol>
+    <symbol id="i-login" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  </defs>
+</svg>
+
+<a class="sm-skip" href="#main">Перейти до основного вмісту</a>
+
+<header class="sm-header">
+  <div class="sm-wrap sm-header__in">
+    <a class="sm-logo" href="/">ШІ-майстерня</a>
+    <nav class="sm-nav" aria-label="Основне меню">
+      <a href="/#about">Про курс</a>
+      <a href="/programa/" aria-current="page">Програма</a>
+      <a href="/dlia-batkiv/">Для батьків</a>
+      <a href="/dlia-vchyteliv/">Для вчителів</a>
+      <a href="/faq/">FAQ</a>
+    </nav>
+    <div class="sm-header__tools">
+      <nav class="sm-seg" aria-label="Мова">
+        <a href="/programa/" hreflang="uk" lang="uk" aria-current="true">УКР</a>
+        <a href="/en/curriculum/" hreflang="en" lang="en">EN</a>
+      </nav>
+      <button class="sm-icon-btn theme-btn" type="button" aria-pressed="false" aria-label="Темна тема">
+        <svg class="ic-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+        <svg class="ic-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
+      <a class="sm-btn sm-btn--secondary" href="/login/">
+        <svg aria-hidden="true"><use href="#i-login"/></svg><span class="login-label">Увійти</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===== ГЕРОЙ ===== -->
+  <section class="hero" aria-labelledby="page-title">
+    <div class="sm-wrap">
+      <nav class="sm-crumbs" aria-label="Хлібні крихти">
+        <ol>
+          <li><a href="/">Головна</a></li>
+          <li><span aria-current="page">Програма курсу</span></li>
+        </ol>
+      </nav>
+
+      <div class="hero__grid">
+        <div class="hero__text">
+          <p class="sm-hero-badge"><svg aria-hidden="true"><use href="#i-spark"/></svg>Онлайн-курс · 14–18 років</p>
+          <h1 id="page-title" class="ty-h1">Програма курсу</h1>
+          <p class="hero__course">Всі можливості AI для роботи: реальні задачі та їхні рішення</p>
+          <p class="ty-lead hero__lead">За курс клас створює власну цифрову <b>«ШІ-студію»</b>: мем-генератор, Discord-бота класу і сайт, на якому це все живе. А кожен учень крок за кроком будує свого персонального ШІ-агента — чат-бота з характером, знаннями й правилами безпеки.</p>
+
+          <dl class="facts">
+            <div><dt>модулі</dt><dd>4</dd></div>
+            <div><dt>заняття + додаткове</dt><dd>24</dd></div>
+            <div><dt>власний ШІ-агент</dt><dd>1</dd></div>
+          </dl>
+
+          <div class="hero__cta">
+            <a class="sm-btn sm-btn--accent sm-btn--lg" href="/#apply">Залишити заявку</a>
+            <a class="sm-btn sm-btn--secondary sm-btn--lg" href="#modul-1">
+              <svg aria-hidden="true"><use href="#i-eye"/></svg>Перші заняття — демо
+            </a>
+          </div>
+          <p class="ty-cap">Заняття відкриваються по черзі: наступне — після завершення попереднього. Заняття 1 і 2 — демо-уроки, доступні без входу.</p>
+        </div>
+
+        <div class="hero__art">
+          <div class="hero__mascot">
+            <svg viewBox="-14 -28 228 292" role="img" aria-label="Єнот Байт, маскот курсу, працює за ноутбуком"><ellipse cx="100" cy="246" rx="60" ry="6" fill="#14161c" opacity="0.18"/><path d="M138 206 C186 214 198 150 170 112" fill="none" stroke="#9aa0ab" stroke-width="24" stroke-linecap="round"/><path d="M138 206 C186 214 198 150 170 112" fill="none" stroke="#2a2d36" stroke-width="24" stroke-dasharray="9 17" stroke-dashoffset="-6"/><path d="M84 196 L84 228" fill="none" stroke="#9aa0ab" stroke-width="17" stroke-linecap="round"/><ellipse cx="82" cy="236" rx="13" ry="7" fill="#2a2d36"/><path d="M116 196 L116 228" fill="none" stroke="#9aa0ab" stroke-width="17" stroke-linecap="round"/><ellipse cx="118" cy="236" rx="13" ry="7" fill="#2a2d36"/><ellipse cx="100" cy="166" rx="42" ry="50" fill="#9aa0ab"/><ellipse cx="100" cy="174" rx="26" ry="36" fill="#f4f4ef"/><g transform="translate(52 34) scale(1.5)"><path d="M11 28 L13 7 L29 18 Z" fill="#7d838f" stroke="#7d838f" stroke-width="3" stroke-linejoin="round"/><path d="M53 28 L51 7 L35 18 Z" fill="#7d838f" stroke="#7d838f" stroke-width="3" stroke-linejoin="round"/><path d="M16 23 L17 13 L24 18.5 Z" fill="#2a2d36" stroke="#2a2d36" stroke-width="2" stroke-linejoin="round"/><path d="M48 23 L47 13 L40 18.5 Z" fill="#2a2d36" stroke="#2a2d36" stroke-width="2" stroke-linejoin="round"/><path d="M7 37 C7 23 19 15 32 15 C45 15 57 23 57 37 C57 49 46 57 32 57 C18 57 7 49 7 37 Z" fill="#9aa0ab"/><path d="M13 39 C18 35 26 35 32 41 C38 35 46 35 51 39 C49 50 41 55 32 55 C23 55 15 50 13 39 Z" fill="#f4f4ef"/><ellipse cx="21.5" cy="25" rx="6.5" ry="2.6" fill="#f4f4ef"/><ellipse cx="42.5" cy="25" rx="6.5" ry="2.6" fill="#f4f4ef"/><path d="M9 34 C11 28 18 27 24 29 C28 30 30 32 32 32 C34 32 36 30 40 29 C46 27 53 28 55 34 C53 39 46 41 40 39 C36 38 34 36 32 36 C30 36 28 38 24 39 C18 41 11 39 9 34 Z" fill="#2a2d36"/><circle cx="21.5" cy="33" r="3.4" fill="#f4f4ef"/><circle cx="42.5" cy="33" r="3.4" fill="#f4f4ef"/><circle cx="22.3" cy="33.4" r="1.9" fill="#14161c"/><circle cx="43.3" cy="33.4" r="1.9" fill="#14161c"/><ellipse cx="32" cy="43" rx="3.6" ry="2.6" fill="#14161c"/><path d="M28.5 47.5 Q32 50.5 35.5 47.5" fill="none" stroke="#14161c" stroke-width="1.8" stroke-linecap="round"/></g><path d="M66 148 Q40 160 46 176" fill="none" stroke="#9aa0ab" stroke-width="15" stroke-linecap="round"/><path d="M134 148 Q160 160 154 176" fill="none" stroke="#9aa0ab" stroke-width="15" stroke-linecap="round"/><rect x="38" y="118" width="124" height="86" rx="8" fill="#2a2d36" stroke="#14161c" stroke-width="3"/><rect x="46" y="126" width="108" height="64" rx="3" fill="#14161c"/><text x="52" y="146" font-family="JetBrains Mono,monospace" font-size="13" font-weight="600" fill="#c5f13a">&gt;_ prompt</text><rect x="52" y="154" width="72" height="5" rx="2.5" fill="#7d838f"/><rect x="52" y="164" width="92" height="5" rx="2.5" fill="#7d838f"/><rect x="52" y="174" width="50" height="5" rx="2.5" fill="#7d838f"/><rect x="92" y="204" width="16" height="12" fill="#7d838f"/><rect x="74" y="214" width="52" height="8" rx="4" fill="#7d838f"/><circle cx="44" cy="178" r="8.5" fill="#2a2d36"/><circle cx="156" cy="178" r="8.5" fill="#2a2d36"/></svg>
+          </div>
+          <aside class="bubble" aria-label="Підказка Байта">
+            <p class="sm-kicker">Підказка Байта</p>
+            <p class="ty-body">Кожне заняття — це теорія, практика і крок для твого агента. Нічого не робиться «в стіл»: усе стає частиною студії класу.</p>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ОГЛЯД МОДУЛІВ ===== -->
+  <section class="sec sec--line" aria-labelledby="modules-title">
+    <div class="sm-wrap">
+      <div class="sec-head">
+        <h2 id="modules-title" class="ty-h2">4 модулі — 4 частини «ШІ-студії»</h2>
+        <p class="ty-lead muted">Кожен модуль додає до студії класу нову частину й нове вміння твоєму агентові.</p>
+      </div>
+      <ul class="grid grid--2">
+        <li>
+          <article class="sm-module" aria-labelledby="ov-m1">
+            <div class="sm-module__top"><p class="sm-kicker"><span class="mod-num" aria-hidden="true">1</span>Модуль 1 · 4 заняття</p></div>
+            <h3 class="sm-module__title" id="ov-m1">Мемолог</h3>
+            <p class="sm-module__lead">Тексти, меми й лор класу. Вчимося писати запити, які дають смішний і точний результат.</p>
+            <ul class="sm-module__tools" aria-label="Сервіси модуля"><li class="sm-tool">ChatGPT</li><li class="sm-tool">Gemini</li></ul>
+            <p class="sm-module__result"><span class="sm-kicker">Результат модуля</span>Лор класу, персонаж майбутнього бота і перший мем-дайджест.</p>
+            <a class="mod-link" href="#modul-1">Заняття модуля 1<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+        </li>
+        <li>
+          <article class="sm-module" aria-labelledby="ov-m2">
+            <div class="sm-module__top"><p class="sm-kicker"><span class="mod-num" aria-hidden="true">2</span>Модуль 2 · 4 заняття</p></div>
+            <h3 class="sm-module__title" id="ov-m2">Цифри за хайпом</h3>
+            <p class="sm-module__lead">Таблиці, графіки й чесні висновки. Вчимося розбирати дані й ловити фейкові висновки.</p>
+            <ul class="sm-module__tools" aria-label="Сервіси модуля"><li class="sm-tool">ChatGPT</li><li class="sm-tool">Google Таблиці</li><li class="sm-tool">Google Форми</li><li class="sm-tool">Gemini</li></ul>
+            <p class="sm-module__result"><span class="sm-kicker">Результат модуля</span>Дані для вікторин і турнірної таблиці бота. Усі дані — відкриті або анонімні.</p>
+            <a class="mod-link" href="#modul-2">Заняття модуля 2<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+        </li>
+        <li>
+          <article class="sm-module" aria-labelledby="ov-m3">
+            <div class="sm-module__top"><p class="sm-kicker"><span class="mod-num" aria-hidden="true">3</span>Модуль 3 · 4 заняття</p></div>
+            <h3 class="sm-module__title" id="ov-m3">Мем-фабрика</h3>
+            <p class="sm-module__lead">ТЗ, дизайн-система, шрифти й доступність. Збираємо власний мем-генератор з українськими шрифтами.</p>
+            <ul class="sm-module__tools" aria-label="Сервіси модуля"><li class="sm-tool">Canvas у ChatGPT або Gemini</li><li class="sm-tool">Google Fonts</li><li class="sm-tool">WebAIM</li><li class="sm-tool">Wikimedia Commons</li></ul>
+            <p class="sm-module__result"><span class="sm-kicker">Результат модуля</span>Власний мем-генератор у браузері: завантажуєш картинку, пишеш текст, скачуєш мем.</p>
+            <a class="mod-link" href="#modul-3">Заняття модуля 3<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+        </li>
+        <li>
+          <article class="sm-module" aria-labelledby="ov-m4">
+            <div class="sm-module__top"><p class="sm-kicker"><span class="mod-num" aria-hidden="true">4</span>Модуль 4 · 12 занять + додаткове</p></div>
+            <h3 class="sm-module__title" id="ov-m4">Ботовод</h3>
+            <p class="sm-module__lead">Discord-бот класу і сайт з Codex. Запускаємо бота й сайт разом з агентом для коду.</p>
+            <ul class="sm-module__tools" aria-label="Сервіси модуля"><li class="sm-tool">Codex</li><li class="sm-tool">Python і discord.py</li><li class="sm-tool">Discord</li><li class="sm-tool">GitHub і GitHub Pages</li><li class="sm-tool">Gemini</li></ul>
+            <p class="sm-module__result"><span class="sm-kicker">Результат модуля</span>Бот із персонажем із модуля 1, даними з модуля 2 та мемами з модуля 3, а також сайт студії на GitHub Pages.</p>
+            <a class="mod-link" href="#modul-4">Заняття модуля 4<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== НАСКРІЗНИЙ ПРОЄКТ ===== -->
+  <section class="sec sec--surface" aria-labelledby="agent-title">
+    <div class="sm-wrap">
+      <div class="sec-head">
+        <p class="sm-kicker"><svg class="ic" aria-hidden="true"><use href="#i-robot"/></svg>Наскрізний проєкт</p>
+        <h2 id="agent-title" class="ty-h2">Мій ШІ-агент: від ідеї до Discord-бота</h2>
+        <p class="ty-lead">Тему агента обираєш сам: помічник для НМТ у стилі літературного героя, гід улюбленою грою, експерт з Євробачення тощо. Усе про агента збирається в <b>паспорті агента</b> — текстовому файлі, який росте від заняття до заняття і в модулі 4 стає «мозком» бота.</p>
+      </div>
+
+      <ol class="grid grid--4 agent-steps">
+        <li class="sm-card agent-step">
+          <p class="sm-kicker"><span class="mod-num" aria-hidden="true">1</span>Після модуля 1</p>
+          <dl>
+            <div><dt>Що вміє учень</dt><dd>Пише запити, які дають смішний і точний результат, веде лор класу</dd></div>
+            <div><dt>Що з’являється в агента</dt><dd>Характер, інструкції, приклади діалогів</dd></div>
+          </dl>
+          <p class="where"><span class="sm-kicker">Де живе агент</span><br>Проєкт у ChatGPT</p>
+        </li>
+        <li class="sm-card agent-step">
+          <p class="sm-kicker"><span class="mod-num" aria-hidden="true">2</span>Після модуля 2</p>
+          <dl>
+            <div><dt>Що вміє учень</dt><dd>Розбирає дані й ловить фейкові висновки</dd></div>
+            <div><dt>Що з’являється в агента</dt><dd>Файли знань і тест із правильними відповідями</dd></div>
+          </dl>
+          <p class="where"><span class="sm-kicker">Де живе агент</span><br>Проєкт у ChatGPT + Google Таблиці</p>
+        </li>
+        <li class="sm-card agent-step">
+          <p class="sm-kicker"><span class="mod-num" aria-hidden="true">3</span>Після модуля 3</p>
+          <dl>
+            <div><dt>Що вміє учень</dt><dd>Має власний мем-генератор з українськими шрифтами</dd></div>
+            <div><dt>Що з’являється в агента</dt><dd>Аватар, стиль, сторінка-чат, мем-генератор як вміння</dd></div>
+          </dl>
+          <p class="where"><span class="sm-kicker">Де живе агент</span><br>Прототип у Canvas</p>
+        </li>
+        <li class="sm-card agent-step">
+          <p class="sm-kicker"><span class="mod-num" aria-hidden="true">4</span>Після модуля 4</p>
+          <dl>
+            <div><dt>Що вміє учень</dt><dd>Запускає Discord-бота і сайт разом з агентом Codex</dd></div>
+            <div><dt>Що з’являється в агента</dt><dd>Власний «мозок», команди, захист, журнал розмов</dd></div>
+          </dl>
+          <p class="where"><span class="sm-kicker">Де живе агент</span><br>Discord-бот класу</p>
+        </li>
+      </ol>
+
+      <div class="sec-head" style="margin: var(--space-7) 0 var(--space-4)">
+        <h3 class="ty-h3">Як росте паспорт агента</h3>
+      </div>
+      <ol class="versions" aria-label="Версії паспорта агента">
+        <li><b>0.1</b>тема, ім’я, три риси</li>
+        <li><b>0.2</b>біографія, фрази, 5 діалогів</li>
+        <li><b>0.3</b>вітання і FAQ з 10 питань</li>
+        <li><b>0.4</b>порядок роботи агента</li>
+        <li><b>0.5</b>перший тест із 10 питань</li>
+        <li><b>0.6</b>мем-генератор — перше вміння</li>
+        <li><b>agent.md</b>паспорт стає частиною коду</li>
+        <li class="is-final"><b>1.0</b>агент уперше відповідає сам</li>
+      </ol>
+
+      <div class="rules-grid" style="margin-top: var(--space-7)">
+        <aside class="sm-rule" aria-label="Правила для всіх агентів">
+          <p class="sm-rule__label"><svg aria-hidden="true"><use href="#i-shield"/></svg>Правила для всіх агентів</p>
+          <ul class="agent-rules sm-rule__text">
+            <li>Агент ніколи не питає особистих даних.</li>
+            <li>Чесно каже «не знаю».</li>
+            <li>Не вдає реальну людину.</li>
+            <li>У небезпечних темах відмовляє й радить звернутися до дорослого.</li>
+            <li>Усі розмови бота в Discord видно викладачу.</li>
+          </ul>
+        </aside>
+        <div>
+          <h3 class="ty-h3" style="margin-bottom: var(--space-3)">Теми, на яких вчимося</h3>
+          <ul class="topics">
+            <li>Музика й Євробачення</li>
+            <li>Спорт</li>
+            <li>Шкільне життя й НМТ</li>
+            <li>Вірусні відео</li>
+            <li>Minecraft, Roblox, кіберспорт</li>
+          </ul>
+          <p class="ty-cap" style="margin-top: var(--space-3)">Список тем викладач оновлює разом із класом на першому занятті — тренди швидко старіють. Ігри з рейтингом 16+ чи 18+ на заняттях не використовуємо.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== МОДУЛЬ 1 ===== -->
+  <section id="modul-1" class="sec" aria-labelledby="m1-title">
+    <div class="sm-wrap">
+      <header class="mod-head">
+        <p class="sm-kicker"><span class="mod-num" aria-hidden="true">1</span>Модуль 1 · заняття 1–4</p>
+        <h2 id="m1-title" class="ty-h2">Мемолог: тексти, меми й лор класу</h2>
+        <ul class="sm-module__tools" aria-label="Сервіси модуля"><li class="sm-tool">ChatGPT</li><li class="sm-tool">Gemini</li></ul>
+      </header>
+
+      <div class="mod-layout">
+        <ol class="sm-acc lessons">
+          <li>
+            <details class="sm-acc__item lesson" id="zaniattia-1" open>
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">1</span>
+                <span class="l-txt">
+                  <span class="l-kick">Заняття 1 <span class="sm-pill sm-pill--now"><svg aria-hidden="true"><use href="#i-eye"/></svg>Демо · без входу</span></span>
+                  <h3 class="l-title">Чому ШІ не розуміє мемів (і як це виправити)</h3>
+                </span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="l1-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="l1-t">Теорія</h4></div><div class="sm-sec__body"><p>Стартуємо з «Don’t push the horses»: просимо ChatGPT перекласти фразу Усика назад і дивимось, чи він вловить жарт. Звідси — п’ятиелементна модель запиту: <b>роль, ціль, контекст, формат, обмеження</b>. Без контексту штучний інтелект не знає, що смішне саме вашій аудиторії. Теги &lt;текст&gt; і &lt;завдання&gt;, приклад у запиті, покрокове уточнення. Постійні інструкції в ChatGPT і Gem у Gemini.</p></div></section>
+                <section class="sm-sec" aria-labelledby="l1-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="l1-p">Практика</h4></div><div class="sm-sec__body"><p>«Мем-галерея запитів». Усі починають зі слабкого запиту «зроби смішний підпис про НМТ», а потім переписують його за моделлю. Результати — у спільну галерею, і разом розбираємо, який елемент запиту спрацював. Потім кожен створює постійну інструкцію «Тарас Григорович веде Threads» або «Котляревський розповідає сторітайм» і перевіряє її на темі з літератури.</p></div></section>
+                <section class="sm-sec sm-sec--agent" aria-labelledby="l1-a"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-robot"/></svg><h4 class="sm-sec__label" id="l1-a">Агент</h4><span class="sm-ver">Паспорт 0.1</span></div><div class="sm-sec__body"><p>Постійна інструкція з практики стає зародком власного агента: учень обирає тему, ім’я та три риси характеру агента і зберігає інструкцію в текстовий файл «паспорт агента».</p></div></section>
+                <div class="l-extras"><a class="sm-btn sm-btn--secondary" href="/demo/1/"><svg aria-hidden="true"><use href="#i-eye"/></svg>Відкрити демо-урок</a></div>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="sm-acc__item lesson" id="zaniattia-2">
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">2</span>
+                <span class="l-txt">
+                  <span class="l-kick">Заняття 2 <span class="sm-pill sm-pill--now"><svg aria-hidden="true"><use href="#i-eye"/></svg>Демо · без входу</span></span>
+                  <h3 class="l-title">Лор класу: проєкт і персонаж бота</h3>
+                </span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="l2-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="l2-t">Теорія</h4></div><div class="sm-sec__body"><p>Проєкт у ChatGPT — «пам’ять» на одну тему: файли, інструкції, історія чатів. Як фанати ведуть вікі вигаданих світів — так само ми ведемо лор класу. Детальна інструкція описує процес, а не лише тон. Академічна доброчесність: де межа між допомогою і списуванням.</p></div></section>
+                <section class="sm-sec" aria-labelledby="l2-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="l2-p">Практика</h4></div><div class="sm-sec__body"><p>Клас вигадує персонажа для майбутнього Discord-бота: козак-характерник, що коментує домашку, кіт зі шкільного подвір’я чи сова-фанатка Євробачення. Учні створюють проєкт «Лор класу»: файл із біографією персонажа, його улюбленими фразами та правилами тону. Перевіряють, чи персонаж залишається собою в десяти різних ситуаціях.</p></div></section>
+                <section class="sm-sec sm-sec--agent" aria-labelledby="l2-a"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-robot"/></svg><h4 class="sm-sec__label" id="l2-a">Агент</h4><span class="sm-ver">Паспорт 0.2</span></div><div class="sm-sec__body"><p>Окрім спільного персонажа класу, кожен створює проєкт «Мій агент» і переносить туди паспорт: біографія, улюблені фрази, 5 прикладів діалогів і 3 речі, яких агент ніколи не робить. Перевіряє агента в тих самих десяти ситуаціях.</p></div></section>
+                <div class="l-extras"><a class="sm-btn sm-btn--secondary" href="/demo/2/"><svg aria-hidden="true"><use href="#i-eye"/></svg>Відкрити демо-урок</a></div>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="sm-acc__item lesson" id="zaniattia-3">
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">3</span>
+                <span class="l-txt"><span class="l-kick">Заняття 3</span><h3 class="l-title">Сценарій короткого відео в Canvas</h3></span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="l3-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="l3-t">Теорія</h4></div><div class="sm-sec__body"><p>Canvas у ChatGPT — окреме вікно документа з точковими правками та версіями. Структура короткого відео: гачок у перші 3 секунди, поворот, фінал. Завантаження власних Word/PDF та редагування зі збереженням власного голосу.</p></div></section>
+                <section class="sm-sec" aria-labelledby="l3-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="l3-p">Практика</h4></div><div class="sm-sec__body"><p>Учні пишуть у Canvas сценарій 60-секундного відео «Тема з НМТ за хвилину» (наприклад, «Лісова пісня» як драма в чаті героїв). Вносять 3–4 правки і порівнюють версії. Друга частина: завантажують власний твір і просять лише вказати помилки, а виправляють самі.</p></div></section>
+                <section class="sm-sec sm-sec--agent" aria-labelledby="l3-a"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-robot"/></svg><h4 class="sm-sec__label" id="l3-a">Агент</h4><span class="sm-ver">Паспорт 0.3</span></div><div class="sm-sec__body"><p>У Canvas учень пише вітальне повідомлення агента і FAQ із 10 питань та відповідей. Кожну правку фіксує як нову версію паспорта.</p></div></section>
+                <p class="l-note"><svg aria-hidden="true"><use href="#i-info"/></svg><span><b>Варто знати:</b> знімати відео — за бажанням, удома.</span></p>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="sm-acc__item lesson" id="zaniattia-4">
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">4</span>
+                <span class="l-txt"><span class="l-kick">Заняття 4</span><h3 class="l-title">Агент і мем-дайджест тижня</h3></span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="l4-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="l4-t">Теорія</h4></div><div class="sm-sec__body"><p>Різниця між разовим запитом і агентом, який сам планує кроки. Агентний режим ChatGPT показує викладач (він є не на всіх тарифах). Повний цикл: збір → чернетка → редагування → фінал. Задачі за розкладом — коротко.</p></div></section>
+                <section class="sm-sec" aria-labelledby="l4-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="l4-p">Практика</h4></div><div class="sm-sec__body"><p>Учні самі грають роль агента-«диригента» і випускають «Мем-дайджест тижня» від імені персонажа класу: збирають 3 новини школи, роблять чернетку, перевіряють факти в Gemini і фіналізують. Найкращий дайджест стане першим постом бота в модулі 4.</p></div></section>
+                <section class="sm-sec sm-sec--agent" aria-labelledby="l4-a"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-robot"/></svg><h4 class="sm-sec__label" id="l4-a">Агент</h4><span class="sm-ver">Паспорт 0.4</span></div><div class="sm-sec__body"><p>Агент учня випускає власний міні-дайджест у своїй темі. Учень записує в паспорт порядок роботи агента: план → чернетка → перевірка фактів → фінал.</p></div></section>
+                <p class="l-note"><svg aria-hidden="true"><use href="#i-info"/></svg><span><b>Варто знати:</b> агентний режим — лише демонстрація викладача.</span></p>
+              </div>
+            </details>
+          </li>
+        </ol>
+
+        <aside class="mod-side" aria-label="Підсумок модуля 1">
+          <div class="sm-card">
+            <h3>Після модуля 1</h3>
+            <dl>
+              <div><dt>Що вміє учень</dt><dd>Пише запити, які дають смішний і точний результат, веде лор класу</dd></div>
+              <div><dt>Що з’являється в агента</dt><dd>Характер, інструкції, приклади діалогів</dd></div>
+              <div><dt>Де живе агент</dt><dd>Проєкт у ChatGPT</dd></div>
+            </dl>
+          </div>
+          <p class="sm-module__result"><span class="sm-kicker">Результат модуля</span>Лор класу, персонаж майбутнього бота і перший мем-дайджест.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== МОДУЛЬ 2 ===== -->
+  <section id="modul-2" class="sec sec--line" aria-labelledby="m2-title">
+    <div class="sm-wrap">
+      <header class="mod-head">
+        <p class="sm-kicker"><span class="mod-num" aria-hidden="true">2</span>Модуль 2 · заняття 5–8</p>
+        <h2 id="m2-title" class="ty-h2">Цифри за хайпом</h2>
+        <ul class="sm-module__tools" aria-label="Сервіси модуля"><li class="sm-tool">ChatGPT (аналіз даних)</li><li class="sm-tool">Google Таблиці</li><li class="sm-tool">Google Форми</li><li class="sm-tool">Gemini</li></ul>
+      </header>
+
+      <div class="mod-layout">
+        <ol class="sm-acc lessons" start="5">
+          <li>
+            <details class="sm-acc__item lesson" id="zaniattia-5">
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">5</span>
+                <span class="l-txt"><span class="l-kick">Заняття 5 · модуль 2, заняття 1</span><h3 class="l-title">Євробачення в цифрах</h3></span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="l5-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="l5-t">Теорія</h4></div><div class="sm-sec__body"><p>Завантаження CSV і Excel у ChatGPT. Модель рахує кодом, а не «на око» — але помилитись може в даних. Очищення: дублікати, пропуски, різні написання («Ukraine», «Україна», «UKR»). Який графік підходить для яких даних.</p></div></section>
+                <section class="sm-sec" aria-labelledby="l5-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="l5-p">Практика</h4></div><div class="sm-sec__body"><p>Викладач дає навмисно «забруднену» таблицю виступів України на Євробаченні з 2003 року до LELEKA 2026 (джерело — Вікіпедія). Учні очищають її, будують графік місць за роками і відповідають на питання для майбутньої вікторини бота: скільки разів Україна потрапила в топ-5? Одну відповідь перевіряють вручну.</p></div></section>
+                <section class="sm-sec sm-sec--agent" aria-labelledby="l5-a"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-robot"/></svg><h4 class="sm-sec__label" id="l5-a">Агент</h4></div><div class="sm-sec__body"><p>Учень створює «файл знань» агента — невелику таблицю фактів у темі агента з джерелом для кожного рядка — і додає його до проєкту «Мій агент».</p></div></section>
+                <p class="l-note"><svg aria-hidden="true"><use href="#i-info"/></svg><span><b>Варто знати:</b> питання з цього заняття йдуть у вікторину бота.</span></p>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="sm-acc__item lesson" id="zaniattia-6">
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">6</span>
+                <span class="l-txt"><span class="l-kick">Заняття 6 · модуль 2, заняття 2</span><h3 class="l-title">Турнірна таблиця в Google Таблицях</h3></span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="l6-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="l6-t">Теорія</h4></div><div class="sm-sec__body"><p>Формули SUM, AVERAGE, IF, VLOOKUP, сортування, умовне форматування. Як попросити ChatGPT або Gemini пояснити формулу і знайти помилку — і чому відповідь треба перевірити в самій таблиці.</p></div></section>
+                <section class="sm-sec" aria-labelledby="l6-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="l6-p">Практика</h4></div><div class="sm-sec__body"><p>Учні створюють турнірну таблицю класу (футбол, шахи, турнір у Minecraft чи Brawl-ліга на вибір класу): очки, різниця, місце. Навмисно ламають одну формулу й запитують у помічника, чому «чемпіоном стала не та команда».</p></div></section>
+                <section class="sm-sec sm-sec--agent" aria-labelledby="l6-a"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-robot"/></svg><h4 class="sm-sec__label" id="l6-a">Агент</h4></div><div class="sm-sec__body"><p>Учень навмисно псує один рядок у файлі знань і перевіряє, чи агент помітить суперечність. Додає в паспорт правило: «якщо дані суперечать одне одному — скажи про це».</p></div></section>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="sm-acc__item lesson" id="zaniattia-7">
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">7</span>
+                <span class="l-txt"><span class="l-kick">Заняття 7 · модуль 2, заняття 3</span><h3 class="l-title">Чарт класу: регулярний звіт</h3></span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="l7-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="l7-t">Теорія</h4></div><div class="sm-sec__body"><p>Анонімне опитування в Google Формах без збору імен і пошти. Проєкт ChatGPT із зразком минулого звіту та інструкцією, що фіксує структуру: розділи, порядок, типи графіків.</p></div></section>
+                <section class="sm-sec" aria-labelledby="l7-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="l7-p">Практика</h4></div><div class="sm-sec__body"><p>Клас запускає щотижневий «Чарт класу» — анонімне голосування за трек тижня з української музики. Учні створюють проєкт з інструкцією звіту та перевіряють її на даних двох тижнів: хто зростає, хто випадає з топу.</p></div></section>
+                <section class="sm-sec sm-sec--agent" aria-labelledby="l7-a"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-robot"/></svg><h4 class="sm-sec__label" id="l7-a">Агент</h4></div><div class="sm-sec__body"><p>Агент отримує вміння «звіт тижня»: учень пише для нього інструкцію короткого звіту у своїй темі і перевіряє на двох наборах даних.</p></div></section>
+                <p class="l-note"><svg aria-hidden="true"><use href="#i-info"/></svg><span><b>Варто знати:</b> опитування анонімне — без імен і пошти.</span></p>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="sm-acc__item lesson" id="zaniattia-8">
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">8</span>
+                <span class="l-txt"><span class="l-kick">Заняття 8 · модуль 2, заняття 4</span><h3 class="l-title">Ловець фейкових висновків + підсумковий кейс</h3></span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="l8-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="l8-t">Теорія</h4></div><div class="sm-sec__body"><p>Кілька джерел → зведений звіт. Факт і висновок; чому збіг — ще не причина. Як з цифр роблять маніпулятивні заголовки та фейкові графіки (обрізана вісь, вибрані тижні).</p></div></section>
+                <section class="sm-sec" aria-labelledby="l8-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="l8-p">Практика</h4></div><div class="sm-sec__body"><p>Учні отримують дві таблиці — графік відключень світла й вигадану «кількість мемів у чаті класу» — і просять ШІ довести, що темрява робить людей смішнішими. Потім самі розбивають цей висновок і презентують чесний зведений звіт.</p></div></section>
+                <section class="sm-sec sm-sec--agent" aria-labelledby="l8-a"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-robot"/></svg><h4 class="sm-sec__label" id="l8-a">Агент</h4><span class="sm-ver">Паспорт 0.5</span></div><div class="sm-sec__body"><p>Перший тест агента — 10 питань з еталонними відповідями, серед них 2 питання, на які агент мусить чесно сказати «не знаю». Результати й виправлення записують у паспорт.</p></div></section>
+              </div>
+            </details>
+          </li>
+        </ol>
+
+        <aside class="mod-side" aria-label="Підсумок модуля 2">
+          <div class="sm-card">
+            <h3>Після модуля 2</h3>
+            <dl>
+              <div><dt>Що вміє учень</dt><dd>Розбирає дані й ловить фейкові висновки</dd></div>
+              <div><dt>Що з’являється в агента</dt><dd>Файли знань і тест із правильними відповідями</dd></div>
+              <div><dt>Де живе агент</dt><dd>Проєкт у ChatGPT + Google Таблиці</dd></div>
+            </dl>
+          </div>
+          <p class="sm-module__result"><span class="sm-kicker">Результат модуля</span>Дані для вікторин і турнірної таблиці бота. Усі дані — відкриті або анонімні.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== МОДУЛЬ 3 ===== -->
+  <section id="modul-3" class="sec sec--line" aria-labelledby="m3-title">
+    <div class="sm-wrap">
+      <header class="mod-head">
+        <p class="sm-kicker"><span class="mod-num" aria-hidden="true">3</span>Модуль 3 · заняття 9–12</p>
+        <h2 id="m3-title" class="ty-h2">Мем-фабрика</h2>
+        <ul class="sm-module__tools" aria-label="Сервіси модуля"><li class="sm-tool">Canvas у ChatGPT або Gemini</li><li class="sm-tool">Google Fonts</li><li class="sm-tool">WebAIM</li><li class="sm-tool">Wikimedia Commons</li></ul>
+      </header>
+
+      <div class="mod-layout">
+        <ol class="sm-acc lessons" start="9">
+          <li>
+            <details class="sm-acc__item lesson" id="zaniattia-9">
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">9</span>
+                <span class="l-txt"><span class="l-kick">Заняття 9 · модуль 3, заняття 1</span><h3 class="l-title">Технічне завдання на мем-генератор</h3></span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="l9-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="l9-t">Теорія</h4></div><div class="sm-sec__body"><p>Спершу опис задачі, потім реалізація: помилка в ТЗ коштує дорожче. ТЗ через інтерв’ю: модель питає по черзі, учень відповідає. Як влаштований мем як формат: шаблон, підпис, контекст, який треба знати.</p></div></section>
+                <section class="sm-sec" aria-labelledby="l9-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="l9-p">Практика</h4></div><div class="sm-sec__body"><p>Учні проходять інтерв’ю та отримують ТЗ на мем-генератор свого класу: які шаблони («козак думає», «коли дали світло», «перед НМТ / після НМТ»), що вміє кнопка, чи потрібна нічна тема. Потім викреслюють з ТЗ те, чого не замовляли.</p></div></section>
+                <section class="sm-sec sm-sec--agent" aria-labelledby="l9-a"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-robot"/></svg><h4 class="sm-sec__label" id="l9-a">Агент</h4></div><div class="sm-sec__body"><p>Учень пише коротке ТЗ на сторінку-чат свого агента: поле питання, відповідь, аватар, кнопка «Нова розмова» — і викреслює зайве.</p></div></section>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="sm-acc__item lesson" id="zaniattia-10">
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">10</span>
+                <span class="l-txt"><span class="l-kick">Заняття 10 · модуль 3, заняття 2</span><h3 class="l-title">Дизайн-система студії</h3></span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="l10-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="l10-t">Теорія</h4></div><div class="sm-sec__body"><p>Дизайн-система — кольори, шрифти, відступи, кнопки й їхні стани. Як відомі бренди тримають стиль у стікерах, скінах і мерчі. Логіка сторінки: верхній блок із головною думкою, заклик до дії, футер.</p></div></section>
+                <section class="sm-sec" aria-labelledby="l10-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="l10-p">Практика</h4></div><div class="sm-sec__body"><p>Учні створюють дизайн-систему студії в стилі персонажа класу (наприклад, вишивані візерунки + піксель-арт), а потім макет головної сторінки мем-генератора з трьома зонами.</p></div></section>
+                <section class="sm-sec sm-sec--agent" aria-labelledby="l10-a"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-robot"/></svg><h4 class="sm-sec__label" id="l10-a">Агент</h4></div><div class="sm-sec__body"><p>У дизайн-системі з’являються аватар і кольори агента; учень описує їх у паспорті, щоб агент виглядав однаково на сайті й у Discord.</p></div></section>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="sm-acc__item lesson" id="zaniattia-11">
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">11</span>
+                <span class="l-txt"><span class="l-kick">Заняття 11 · модуль 3, заняття 3</span><h3 class="l-title">Шрифти, кирилиця і доступність мемів</h3></span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="l11-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="l11-t">Теорія</h4></div><div class="sm-sec__body"><p>Класичний мемний шрифт не завжди має ґ, є, і, ї — а без них жарт ламається. Фільтр мови в Google Fonts. Білий текст із чорною обвідкою та контраст на різних фонах. Альт-текст: як незрячі люди «читають» меми і чому це важливо.</p></div></section>
+                <section class="sm-sec" aria-labelledby="l11-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="l11-p">Практика</h4></div><div class="sm-sec__body"><p>«Шрифтовий краш-тест»: учні набирають трьома шрифтами фразу «ґанок, єнот, їжак і ще йогурт», шукають зламані літери та обирають шрифт для генератора. Пишуть альт-текст до трьох мемів і перевіряють, чи жарт зрозумілий без картинки.</p></div></section>
+                <section class="sm-sec sm-sec--agent" aria-labelledby="l11-a"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-robot"/></svg><h4 class="sm-sec__label" id="l11-a">Агент</h4></div><div class="sm-sec__body"><p>Альт-текст для аватара агента і перевірка, що відповіді агента з ґ, є, ї, й коректно відображаються обраним шрифтом.</p></div></section>
+                <p class="l-note"><svg aria-hidden="true"><use href="#i-info"/></svg><span><b>Варто знати:</b> Google Fonts і WebAIM працюють без облікового запису.</span></p>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="sm-acc__item lesson" id="zaniattia-12">
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">12</span>
+                <span class="l-txt"><span class="l-kick">Заняття 12 · модуль 3, заняття 4</span><h3 class="l-title">Збираємо мем-генератор + підсумковий тест</h3></span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="l12-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="l12-t">Теорія</h4></div><div class="sm-sec__body"><p>Повний цикл: ТЗ → дизайн-система → макет → робоча сторінка → перевірка. Авторське право й етика мемів: звідки брати картинки, що таке діпфейк і чому мем про людину без її згоди може стати цибербулінгом.</p></div></section>
+                <section class="sm-sec" aria-labelledby="l12-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="l12-p">Практика</h4></div><div class="sm-sec__body"><p>Учні збирають у Canvas робочий мем-генератор (вибір шаблону, верхній і нижній текст, кнопка «Скачати»), тестують його на телефоні та влаштовують першу мем-галерею класу з обговоренням. HTML-файл зберігають для модуля 4.</p></div></section>
+                <section class="sm-sec sm-sec--agent" aria-labelledby="l12-a"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-robot"/></svg><h4 class="sm-sec__label" id="l12-a">Агент</h4><span class="sm-ver">Паспорт 0.6</span></div><div class="sm-sec__body"><p>Поруч із мем-генератором учень збирає в Canvas прототип сторінки-чату агента, який поки відповідає фразами з FAQ. Мем-генератор записують у паспорт як перше «вміння» агента.</p></div></section>
+                <p class="l-note"><svg aria-hidden="true"><use href="#i-info"/></svg><span><b>Варто знати:</b> лише власні чи вільні зображення.</span></p>
+              </div>
+            </details>
+          </li>
+        </ol>
+
+        <aside class="mod-side" aria-label="Підсумок модуля 3">
+          <div class="sm-card">
+            <h3>Після модуля 3</h3>
+            <dl>
+              <div><dt>Що вміє учень</dt><dd>Має власний мем-генератор з українськими шрифтами</dd></div>
+              <div><dt>Що з’являється в агента</dt><dd>Аватар, стиль, сторінка-чат, мем-генератор як вміння</dd></div>
+              <div><dt>Де живе агент</dt><dd>Прототип у Canvas</dd></div>
+            </dl>
+          </div>
+          <aside class="sm-rule" aria-label="Мемоправило">
+            <p class="sm-rule__label"><svg aria-hidden="true"><use href="#i-shield"/></svg>Мемоправило</p>
+            <p class="sm-rule__text">Жодних мемів про однокласників без їхньої згоди й згенерованих зображень реальних людей. Тільки власні фото, шаблони з вільною ліцензією (наприклад, Wikimedia Commons) або намальоване самостійно. Політичні та військові теми залишаємо поза мемами курсу.</p>
+          </aside>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== МОДУЛЬ 4 ===== -->
+  <section id="modul-4" class="sec sec--line" aria-labelledby="m4-title">
+    <div class="sm-wrap">
+      <header class="mod-head">
+        <p class="sm-kicker"><span class="mod-num" aria-hidden="true">4</span>Модуль 4 · заняття 13–24 + додаткове</p>
+        <h2 id="m4-title" class="ty-h2">Ботовод: Discord-бот класу і сайт з Codex</h2>
+        <ul class="sm-module__tools" aria-label="Сервіси модуля"><li class="sm-tool">Codex через обліковий запис ChatGPT</li><li class="sm-tool">Python і discord.py</li><li class="sm-tool">Discord</li><li class="sm-tool">GitHub і GitHub Pages</li><li class="sm-tool">Gemini для рецензій</li></ul>
+      </header>
+
+      <div class="mod-layout">
+        <ol class="sm-acc lessons">
+          <li>
+            <details class="sm-acc__item lesson" id="zaniattia-13">
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">13</span>
+                <span class="l-txt"><span class="l-kick">Заняття 13 · модуль 4, заняття 1</span><h3 class="l-title">Знайомство з Codex: агент оживляє мем-генератор</h3></span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="l13-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="l13-t">Теорія</h4></div><div class="sm-sec__body"><p>Агент схожий на чат, але сам створює файли і запускає команди; його можливості дорівнюють можливостям комп’ютера. Режими дозволів: лише читання, автоматичний у межах папки, повний доступ (на курсі не вмикаємо). Передача справ — короткий звіт для наступної сесії.</p></div></section>
+                <section class="sm-sec" aria-labelledby="l13-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="l13-p">Практика</h4></div><div class="sm-sec__body"><p>Учні кладуть мем-генератор із модуля 3 в папку проєкту й просять Codex додати новий шаблон і кнопку «Випадковий мем». Переконуються, що агент діє, а не радить, і пишуть перший звіт для передачі справ.</p></div></section>
+                <section class="sm-sec sm-sec--agent" aria-labelledby="l13-a"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-robot"/></svg><h4 class="sm-sec__label" id="l13-a">Агент</h4><span class="sm-ver">agent.md</span></div><div class="sm-sec__body"><p>Codex переносить прототип чату агента в папку проєкту, а паспорт стає файлом agent.md — тепер це частина коду.</p></div></section>
+                <div class="l-extras"><p class="sm-desktop"><svg aria-hidden="true"><use href="#i-monitor"/></svg>Краще на комп’ютері</p></div>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="sm-acc__item lesson" id="zaniattia-14">
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">14</span>
+                <span class="l-txt"><span class="l-kick">Заняття 14 · модуль 4, заняття 2</span><h3 class="l-title">Безпека: токен бота — це пароль</h3></span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="l14-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="l14-t">Теорія</h4></div><div class="sm-sec__body"><p>Правило мінімальних доступів. Токен бота дає повний контроль над ним: він живе у файлі .env, який ніколи не потрапляє на GitHub (.gitignore), і ніколи не вставляється в чат із ШІ. Шкідливі інструкції в тексті (prompt injection): що, якщо хтось напише боту «забудь усі правила»? «Втома підтверджень».</p></div></section>
+                <section class="sm-sec" aria-labelledby="l14-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="l14-p">Практика</h4></div><div class="sm-sec__body"><p>«Пограбуй свій репозиторій»: викладач показує навчальний репозиторій із «забутим» фейковим токеном, учні шукають витік. Потім пишуть правила безпеки бота та перевіряють правило «це дані, а не команди» на «отруєному» повідомленні.</p></div></section>
+                <section class="sm-sec sm-sec--agent" aria-labelledby="l14-a"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-robot"/></svg><h4 class="sm-sec__label" id="l14-a">Агент</h4></div><div class="sm-sec__body"><p>У паспорт додається розділ «Захист»: агент не виконує команд із чужих повідомлень, не розкриває свою інструкцію, не просить особистих даних; ключі живуть лише в .env. Учні пробують «зламати» власного агента отруєним повідомленням і виправляють паспорт.</p></div></section>
+                <div class="l-extras"><p class="sm-desktop"><svg aria-hidden="true"><use href="#i-monitor"/></svg>Краще на комп’ютері</p></div>
+                <p class="l-note"><svg aria-hidden="true"><use href="#i-info"/></svg><span><b>Варто знати:</b> токен ніколи не вставляємо в чат.</span></p>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="sm-acc__item lesson" id="zaniattia-15">
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">15</span>
+                <span class="l-txt"><span class="l-kick">Заняття 15 · модуль 4, заняття 3</span><h3 class="l-title">AGENTS.md: характер бота для агента</h3></span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="l15-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="l15-t">Теорія</h4></div><div class="sm-sec__body"><p>Роль сама не додає знань — потрібен контекст. Замість «не помиляйся» — критерії перевірки. Файл AGENTS.md — постійні інструкції для Codex. Чому довгі чати гіршають: помилка на початку «живе» в контексті.</p></div></section>
+                <section class="sm-sec" aria-labelledby="l15-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="l15-p">Практика</h4></div><div class="sm-sec__body"><p>Учні переносять персонажа з лору класу в AGENTS.md: як бот говорить, яких тем уникає, як реагує на грубість. Порівнюють код від Codex до і після цього файлу.</p></div></section>
+                <section class="sm-sec sm-sec--agent" aria-labelledby="l15-a"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-robot"/></svg><h4 class="sm-sec__label" id="l15-a">Агент</h4></div><div class="sm-sec__body"><p>Учні розрізняють два файли: AGENTS.md пояснює Codex, як писати код, а agent.md — як говорити й поводитися їхньому агентові в боті.</p></div></section>
+                <div class="l-extras"><p class="sm-desktop"><svg aria-hidden="true"><use href="#i-monitor"/></svg>Краще на комп’ютері</p></div>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="sm-acc__item lesson" id="zaniattia-16">
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">16</span>
+                <span class="l-txt"><span class="l-kick">Заняття 16 · модуль 4, заняття 4</span><h3 class="l-title">Git, термінал і GitHub</h3></span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="l16-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="l16-t">Теорія</h4></div><div class="sm-sec__body"><p>Термінал (cd, ls), git як «збереження в грі» — коміти, до яких можна повернутись. Гілка — паралельний всесвіт, де можна експериментувати, не ламаючи main. GitHub і pull request — спільне сховище й перевірка змін.</p></div></section>
+                <section class="sm-sec" aria-labelledby="l16-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="l16-p">Практика</h4></div><div class="sm-sec__body"><p>Учні реєструються на GitHub, створюють репозиторій студії з .gitignore для .env, роблять перший коміт, створюють гілку для нового шаблону мему та зливають її в main.</p></div></section>
+                <section class="sm-sec sm-sec--agent" aria-labelledby="l16-a"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-robot"/></svg><h4 class="sm-sec__label" id="l16-a">Агент</h4></div><div class="sm-sec__body"><p>agent.md потрапляє в репозиторій; кожна нова версія паспорта — окремий коміт, тож історію розвитку агента видно в GitHub.</p></div></section>
+                <div class="l-extras"><p class="sm-desktop"><svg aria-hidden="true"><use href="#i-monitor"/></svg>Краще на комп’ютері</p></div>
+                <p class="l-note"><svg aria-hidden="true"><use href="#i-info"/></svg><span><b>Варто знати:</b> GitHub — з 13 років.</span></p>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="sm-acc__item lesson" id="zaniattia-17">
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">17</span>
+                <span class="l-txt"><span class="l-kick">Заняття 17 · модуль 4, заняття 5</span><h3 class="l-title">Перший Discord-бот: команда <span class="nw">/привіт</span></h3></span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="l17-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="l17-t">Теорія</h4></div><div class="sm-sec__body"><p>Як працює бот: застосунок у Discord Developer Portal, токен, запрошення на сервер і дозволи бота (знову правило мінімальних доступів). Команди через «/», події, відповіді. Бот працює, поки увімкнений комп’ютер із програмою.</p></div></section>
+                <section class="sm-sec" aria-labelledby="l17-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="l17-p">Практика</h4></div><div class="sm-sec__body"><p>Учні разом із Codex створюють бота, який вітається голосом персонажа класу й публікує мем-дайджест із модуля 1. Запускають його на закритому сервері класу.</p></div></section>
+                <section class="sm-sec sm-sec--agent" aria-labelledby="l17-a"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-robot"/></svg><h4 class="sm-sec__label" id="l17-a">Агент</h4></div><div class="sm-sec__body"><p>У боті з’являється команда /агент [ім’я] [питання], яка поки відповідає готовими фразами з FAQ агента — без мовної моделі.</p></div></section>
+                <div class="l-extras"><p class="sm-desktop"><svg aria-hidden="true"><use href="#i-monitor"/></svg>Краще на комп’ютері</p></div>
+                <p class="l-note"><svg aria-hidden="true"><use href="#i-info"/></svg><span><b>Варто знати:</b> сервер класу закритий, його модерує викладач.</span></p>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="sm-acc__item lesson" id="zaniattia-18">
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">18</span>
+                <span class="l-txt"><span class="l-kick">Заняття 18 · модуль 4, заняття 6</span><h3 class="l-title">Команди <span class="nw">/мем</span> і <span class="nw">/вікторина</span></h3></span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="l18-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="l18-t">Теорія</h4></div><div class="sm-sec__body"><p>Як поставити агенту задачу на одну сесію: що зробити, як перевірити, що не чіпати. Дані окремо від коду (файл із питаннями). Читання змін (diff) перед комітом.</p></div></section>
+                <section class="sm-sec" aria-labelledby="l18-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="l18-p">Практика</h4></div><div class="sm-sec__body"><p>Учні додають команду /мем (випадковий шаблон із мем-фабрики + підпис) і /вікторина з питаннями про Євробачення з модуля 2 та літературу для НМТ. Після відповіді бот пояснює правильний варіант і дає джерело — без балів і рейтингів.</p></div></section>
+                <section class="sm-sec sm-sec--agent" aria-labelledby="l18-a"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-robot"/></svg><h4 class="sm-sec__label" id="l18-a">Агент</h4></div><div class="sm-sec__body"><p>Агент учня отримує власну міні-вікторину зі своєї теми: питання беруться з файлу знань.</p></div></section>
+                <div class="l-extras"><p class="sm-desktop"><svg aria-hidden="true"><use href="#i-monitor"/></svg>Краще на комп’ютері</p></div>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="sm-acc__item lesson" id="zaniattia-19">
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">19</span>
+                <span class="l-txt"><span class="l-kick">Заняття 19 · модуль 4, заняття 7</span><h3 class="l-title">Контент для бота і сайту</h3></span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="l19-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="l19-t">Теорія</h4></div><div class="sm-sec__body"><p>Режим глибокого дослідження в ChatGPT або Gemini (якщо доступний). Контент-план. Markdown для сайту — і, до речі, саме цією розміткою форматують текст у Discord. Перевірка фактів: ШІ вигадує питання до вікторини з неправильними відповідями частіше, ніж здається.</p></div></section>
+                <section class="sm-sec" aria-labelledby="l19-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="l19-p">Практика</h4></div><div class="sm-sec__body"><p>Кожен учень досліджує тему свого агента (наприклад, історія українського дубляжу або Україна на Євробаченні), генерує 10 питань, перевіряє кожне за джерелом і додає лише підтверджені. Кожну знайдену «галюцинацію» ШІ записують у спільний журнал помилок і розбирають, чому вона виникла.</p></div></section>
+                <section class="sm-sec sm-sec--agent" aria-labelledby="l19-a"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-robot"/></svg><h4 class="sm-sec__label" id="l19-a">Агент</h4></div><div class="sm-sec__body"><p>Перевірені питання й факти поповнюють файл знань агента; неперевірені — не потрапляють туди ніколи.</p></div></section>
+                <p class="l-note"><svg aria-hidden="true"><use href="#i-info"/></svg><span><b>Варто знати:</b> режим дослідження — якщо він доступний на тарифі.</span></p>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="sm-acc__item lesson" id="zaniattia-20">
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">20</span>
+                <span class="l-txt"><span class="l-kick">Заняття 20 · модуль 4, заняття 8</span><h3 class="l-title">Публікація: сайт студії на GitHub Pages</h3></span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="l20-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="l20-t">Теорія</h4></div><div class="sm-sec__body"><p>Домен, DNS, субдомен. GitHub Pages дає безкоштовну адресу виду ім’я.github.io. SSH-ключ замість пароля. Хостинг бота цілодобово, купівля домену й розсилки — лише теорія, бо потрібні договір і оплата.</p></div></section>
+                <section class="sm-sec" aria-labelledby="l20-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="l20-p">Практика</h4></div><div class="sm-sec__body"><p>Учні публікують сайт студії: мем-генератор, сторінка про бота й список команд, галерея мемів класу, сторінки персональних агентів. Перевіряють DNS відомих сайтів командою nslookup.</p></div></section>
+                <section class="sm-sec sm-sec--agent" aria-labelledby="l20-a"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-robot"/></svg><h4 class="sm-sec__label" id="l20-a">Агент</h4></div><div class="sm-sec__body"><p>У кожного агента — своя сторінка на сайті: аватар, характер, вміння, приклади розмов і правила безпеки.</p></div></section>
+                <div class="l-extras"><p class="sm-desktop"><svg aria-hidden="true"><use href="#i-monitor"/></svg>Краще на комп’ютері</p></div>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="sm-acc__item lesson" id="zaniattia-21">
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">21</span>
+                <span class="l-txt"><span class="l-kick">Заняття 21 · модуль 4, заняття 9</span><h3 class="l-title">Навички для Codex і перехресна рецензія</h3></span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="l21-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="l21-t">Теорія</h4></div><div class="sm-sec__body"><p>Навичка — інструкція з чіткою будовою: назва, коли застосовувати, кроки. Статуси «чернетка» і «затверджено». Одна модель пише код, інша (від іншої компанії) прискіпливо рецензує; 2–3 раунди достатньо.</p></div></section>
+                <section class="sm-sec" aria-labelledby="l21-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="l21-p">Практика</h4></div><div class="sm-sec__body"><p>Учні пишуть навичку «додати нову команду бота» і доводять її до статусу «затверджено». За нею Codex додає команду (/світло з жартами про відключення чи /хтосьогоднічерговий), Gemini шукає в коді вразливості, Codex виправляє.</p></div></section>
+                <section class="sm-sec sm-sec--agent" aria-labelledby="l21-a"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-robot"/></svg><h4 class="sm-sec__label" id="l21-a">Агент</h4></div><div class="sm-sec__body"><p>Учні пишуть навичку «додати агентові нове вміння» і за нею додають своєму агентові одне вміння.</p></div></section>
+                <div class="l-extras"><p class="sm-desktop"><svg aria-hidden="true"><use href="#i-monitor"/></svg>Краще на комп’ютері</p></div>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="sm-acc__item lesson lesson--extra" id="dodatkove-zaniattia">
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">+</span>
+                <span class="l-txt"><span class="l-kick">Додаткове заняття · не входить у 24</span><h3 class="l-title">Мозок агента: локальна модель і команда /агент</h3></span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="lx-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="lx-t">Теорія</h4></div><div class="sm-sec__body"><p>Що таке мовна модель «під капотом» бота; чим відрізняється чат у браузері від програмного доступу; відкриті моделі, які працюють на власному комп’ютері через Ollama без облікового запису; чому учні не створюють власних ключів доступу до моделей.</p></div></section>
+                <section class="sm-sec" aria-labelledby="lx-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="lx-p">Практика</h4></div><div class="sm-sec__body"><p>Викладач запускає локальну модель на своєму комп’ютері. Учні разом із Codex підключають команду /агент до цієї моделі: agent.md стає системною інструкцією, файл знань — довідкою. Порівнюють відповіді агента «до» (фрази з FAQ) і «після» (модель), перевіряють захист отруєним повідомленням і чесне «не знаю». Журнал розмов бота бачить викладач.</p></div></section>
+                <section class="sm-sec sm-sec--agent" aria-labelledby="lx-a"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-robot"/></svg><h4 class="sm-sec__label" id="lx-a">Агент</h4><span class="sm-ver">Паспорт 1.0</span></div><div class="sm-sec__body"><p>Агент уперше відповідає сам — своїм характером і на своїх знаннях.</p></div></section>
+                <div class="l-extras"><p class="sm-desktop"><svg aria-hidden="true"><use href="#i-monitor"/></svg>Краще на комп’ютері</p></div>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="sm-acc__item lesson" id="zaniattia-22">
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">22–23</span>
+                <span class="l-txt"><span class="l-kick">Заняття 22–23 · модуль 4, заняття 10–11</span><h3 class="l-title">Хакатон «ШІ-студія»</h3></span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="l22-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="l22-t">Теорія</h4></div><div class="sm-sec__body"><p>Як працюють справжні хакатони: команда, ролі, обмежений час, демо. Робота в команді через pull request.</p></div></section>
+                <section class="sm-sec" aria-labelledby="l22-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="l22-p">Практика</h4></div><div class="sm-sec__body"><p>Кожен учень доводить свого персонального агента до роботи в Discord-боті класу: команда /агент [ім’я] [питання], власне вміння агента (міні-гра, прогноз на матч, підбірка треків, тренування до НМТ) і сторінка агента на сайті студії.</p><p><b>Заняття 23 — демо-день:</b> кожен показує свого агента в дії (3 хвилини), однокласники ставлять агентові питання наживо, а відгук звучить за схемою «що сподобалося / що я б додав». Без журі, балів і переможців.</p></div></section>
+                <div class="l-extras"><p class="sm-desktop"><svg aria-hidden="true"><use href="#i-monitor"/></svg>Краще на комп’ютері</p></div>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="sm-acc__item lesson" id="zaniattia-24">
+              <summary class="sm-acc__q">
+                <span class="l-num" aria-hidden="true">24</span>
+                <span class="l-txt"><span class="l-kick">Заняття 24 · модуль 4, заняття 12</span><h3 class="l-title">Цифрова безпека: сками, фейки й соцмережі</h3></span>
+                <svg aria-hidden="true"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="sm-acc__a">
+                <section class="sm-sec" aria-labelledby="l24-t"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-book"/></svg><h4 class="sm-sec__label" id="l24-t">Теорія</h4></div><div class="sm-sec__body"><p>Типові пастки для геймерів і користувачів Discord: «безкоштовний Nitro», фейкові розіграші скінів, QR-коди для «входу», зламані акаунти друзів. Вікові обмеження і підліткові налаштування в Discord, Instagram, Threads, Facebook і X (усі — з 13 років). Верифікація, блокування, скарги, двофакторна автентифікація. Як відрізнити діпфейк і що робити, якщо мем про тебе став цькуванням.</p></div></section>
+                <section class="sm-sec" aria-labelledby="l24-p"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-pencil"/></svg><h4 class="sm-sec__label" id="l24-p">Практика</h4></div><div class="sm-sec__body"><p>«Скам-квест»: бот класу надсилає серію повідомлень (частина — навчальні фейки без реальних посилань), учні вирішують, де пастка, і пояснюють, як її впізнали. Потім складають особистий чек-лист безпеки. Акаунти в соцмережах на занятті не створюються.</p></div></section>
+                <section class="sm-sec sm-sec--agent" aria-labelledby="l24-a"><div class="sm-sec__head"><svg class="sm-sec__ic" aria-hidden="true"><use href="#i-robot"/></svg><h4 class="sm-sec__label" id="l24-a">Агент</h4><span class="sm-ver">Фінальна версія</span></div><div class="sm-sec__body"><p>Агент отримує вміння «скам-радар»: якщо в питанні є підозріле посилання чи прохання про пароль, агент попереджає і радить звернутися до дорослого. Фінальна версія паспорта зберігається в портфоліо учня.</p></div></section>
+                <p class="l-note"><svg aria-hidden="true"><use href="#i-info"/></svg><span><b>Варто знати:</b> LinkedIn (16+) у курсі не використовуємо.</span></p>
+              </div>
+            </details>
+          </li>
+        </ol>
+
+        <aside class="mod-side" aria-label="Підсумок модуля 4">
+          <div class="sm-card">
+            <h3>Після модуля 4</h3>
+            <dl>
+              <div><dt>Що вміє учень</dt><dd>Запускає Discord-бота і сайт разом з агентом Codex</dd></div>
+              <div><dt>Що з’являється в агента</dt><dd>Власний «мозок», команди, захист, журнал розмов</dd></div>
+              <div><dt>Де живе агент</dt><dd>Discord-бот класу</dd></div>
+            </dl>
+          </div>
+          <aside class="sm-rule" aria-label="Безпека Discord на курсі">
+            <p class="sm-rule__label"><svg aria-hidden="true"><use href="#i-shield"/></svg>Безпека Discord на курсі</p>
+            <p class="sm-rule__text">Сервер класу створює і модерує викладач: він закритий, сторонніх людей немає. З березня 2026 року Discord за замовчуванням вмикає підліткові налаштування для всіх акаунтів.</p>
+          </aside>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== СЕРВІСИ ===== -->
+  <section id="servisy" class="sec sec--surface" aria-labelledby="services-title">
+    <div class="sm-wrap">
+      <div class="sec-head">
+        <h2 id="services-title" class="ty-h2">Сервіси курсу</h2>
+        <p class="ty-lead muted">Лише сервіси, дозволені з 13 років. Сервіси з вимогою 16+ чи 18+ не використовуються ні учнями, ні для демонстрацій на їхніх облікових записах.</p>
+      </div>
+      <ul class="grid grid--3">
+        <li><article class="sm-service"><h3 class="sm-service__name">ChatGPT</h3><p class="sm-service__role">Основний помічник: тексти, проєкти, Canvas, аналіз даних</p><p class="sm-service__age"><span class="sm-age">13+</span>до 18 років — зі згодою батьків</p></article></li>
+        <li><article class="sm-service"><h3 class="sm-service__name">Codex</h3><p class="sm-service__role">Агент для коду: створює файли, запускає команди, пише бота</p><p class="sm-service__age"><span class="sm-age">13+</span>через обліковий запис ChatGPT, зі згодою батьків</p></article></li>
+        <li><article class="sm-service"><h3 class="sm-service__name">Gemini</h3><p class="sm-service__role">Друга модель для перехресної перевірки фактів і коду</p><p class="sm-service__age"><span class="sm-age">Акаунт Google</span>вік залежить від країни — перевіряємо для своєї</p></article></li>
+        <li><article class="sm-service"><h3 class="sm-service__name">Google Таблиці й Документи</h3><p class="sm-service__role">Таблиці, формули, спільні документи; Google Форми — для анонімних опитувань</p><p class="sm-service__age"><span class="sm-age">Акаунт Google</span>дані — лише відкриті або анонімні</p></article></li>
+        <li><article class="sm-service"><h3 class="sm-service__name">GitHub і GitHub Pages</h3><p class="sm-service__role">Git, сховище коду, безкоштовна публікація сайту студії</p><p class="sm-service__age"><span class="sm-age">13+</span></p></article></li>
+        <li><article class="sm-service"><h3 class="sm-service__name">Discord і discord.py</h3><p class="sm-service__role">Закритий сервер класу та бот класу (модуль 4)</p><p class="sm-service__age"><span class="sm-age">13+</span>і мінімальний вік за законом країни; підлітковий режим за замовчуванням</p></article></li>
+        <li><article class="sm-service"><h3 class="sm-service__name">Google Fonts і WebAIM</h3><p class="sm-service__role">Шрифти з кирилицею й перевірка контрасту</p><p class="sm-service__age"><span class="sm-age">Без акаунта</span></p></article></li>
+        <li><article class="sm-service"><h3 class="sm-service__name">Wikimedia Commons</h3><p class="sm-service__role">Зображення з вільною ліцензією для мемів</p><p class="sm-service__age"><span class="sm-age">Без акаунта</span></p></article></li>
+        <li><article class="sm-service"><h3 class="sm-service__name">X, Facebook, Instagram, Threads</h3><p class="sm-service__role">Лише тема безпеки в мережі — без створення акаунтів на занятті</p><p class="sm-service__age"><span class="sm-age">13+</span></p></article></li>
+      </ul>
+      <p class="ty-cap svc-note">Перед стартом викладач перевіряє, які функції доступні на безкоштовному тарифі й для підліткових облікових записів: набір функцій змінюється.</p>
+    </div>
+  </section>
+
+  <!-- ===== ПРАВИЛА ===== -->
+  <section id="pravyla" class="sec" aria-labelledby="rules-title">
+    <div class="sm-wrap">
+      <div class="sec-head">
+        <h2 id="rules-title" class="ty-h2">Правила курсу</h2>
+        <p class="ty-lead muted">Прості й однакові для всіх — щоб навчання з ШІ було безпечним і чесним.</p>
+      </div>
+      <div class="rules-grid">
+        <div class="sm-card">
+          <h3 class="ty-h3">Вік і дані</h3>
+          <ul class="rules-list">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Учні 14–18 років працюють у ChatGPT лише з письмовою згодою батьків: OpenAI вимагає її для всіх користувачів від 13 до 18 років.</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Кожен учень вказує свій справжній вік. Обходити вікові обмеження заборонено.</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>У чат-боти не завантажуємо особисті дані: прізвища, адреси, телефони, фото однокласників, оцінки.</span></li>
+          </ul>
+        </div>
+        <div class="sm-card">
+          <h3 class="ty-h3">Навчання</h3>
+          <ul class="rules-list">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>ШІ допомагає вчитися, але не пише домашнє завдання замість учня. Кожен результат учень перевіряє і може пояснити.</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Токени й ключі ніколи не вставляємо в чат із ШІ й не викладаємо на GitHub.</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Без балів і рейтингів.</b> У курсі немає очок досвіду, рівнів, переможців чи таблиць лідерів. Мотивація — агент і студія, які ростуть на очах, та доброзичливий відгук викладача й однокласників.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <aside class="sm-hint" aria-label="Підказка Байта">
+        <div class="sm-hint__avatar" aria-hidden="true"><img src="assets/img/bait-avatar.svg" alt="" width="56" height="56"></div>
+        <div class="sm-hint__bubble">
+          <p class="sm-kicker">Байт радить</p>
+          <p class="sm-hint__text">Батькам: які дані збирає сайт і які вікові обмеження мають ChatGPT і Gemini, ми пояснюємо на сторінці <a href="/dlia-batkiv/">«Для батьків»</a>.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===== ЗАКЛИК ===== -->
+  <section class="sec sec--line" aria-labelledby="cta-title">
+    <div class="sm-wrap">
+      <div class="cta">
+        <div style="display:grid;gap:var(--space-3)">
+          <h2 id="cta-title" class="ty-h2">Готовий створити свого агента?</h2>
+          <p class="ty-lead">Залиш заявку — організатори курсу зв’яжуться з тобою, а наставник створить акаунт для навчання.</p>
+        </div>
+        <div class="hero__cta">
+          <a class="sm-btn sm-btn--accent sm-btn--lg" href="/#apply">Залишити заявку</a>
+          <a class="sm-btn sm-btn--secondary sm-btn--lg" href="/demo/1/"><svg aria-hidden="true"><use href="#i-eye"/></svg>Спробувати демо-урок</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="sm-footer">
+  <div class="sm-wrap sm-footer__in">
+    <div class="sm-footer__brand">
+      <div class="sm-avatar sm-avatar--mascot sm-avatar--lg" aria-hidden="true"><img src="assets/img/bait-avatar.svg" alt="" width="56" height="56"></div>
+      <div>
+        <p class="sm-logo">ШІ-майстерня</p>
+        <p class="sm-footer__tag">Освітній сайт про ChatGPT, Codex і Gemini для учнів 14–18 років</p>
+      </div>
+    </div>
+    <nav aria-label="Нижня навігація">
+      <ul class="sm-footer__links">
+        <li><a href="/#about">Про курс</a></li>
+        <li><a href="/programa/" aria-current="page">Програма</a></li>
+        <li><a href="/#apply">Заявка</a></li>
+      </ul>
+    </nav>
+    <ul class="sm-footer__links" aria-label="Допомога">
+      <li><a href="/dlia-batkiv/">Для батьків</a></li>
+      <li><a href="/faq/">FAQ</a></li>
+      <li><a href="/kontakty/">Контакти</a></li>
+    </ul>
+    <ul class="sm-footer__links" aria-label="Документи">
+      <li><a href="/polityka/">Політика конфіденційності</a></li>
+      <li><a href="/umovy/">Умови використання</a></li>
+    </ul>
+  </div>
+  <div class="sm-wrap sm-footer__copy">© 2026 ШІ-майстерня</div>
+</footer>
+
+<script>
+  // Перемикач теми: початкова — за налаштуваннями пристрою, вибір запам'ятовується
+  (function () {
+    var root = document.documentElement;
+    var btn = document.querySelector('.theme-btn');
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    function isDark() {
+      var t = root.getAttribute('data-theme');
+      return t ? t === 'dark' : mq.matches;
+    }
+    function sync() {
+      var dark = isDark();
+      btn.setAttribute('aria-pressed', String(dark));
+      btn.setAttribute('aria-label', dark ? 'Світла тема' : 'Темна тема');
+    }
+    btn.addEventListener('click', function () {
+      var next = isDark() ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('sm-theme', next); } catch (e) {}
+      sync();
+    });
+    if (mq.addEventListener) mq.addEventListener('change', sync);
+    sync();
+  })();
+
+  // Посилання на заняття (#zaniattia-5) відкриває його
+  (function () {
+    function openFromHash() {
+      if (!location.hash) return;
+      var el;
+      try { el = document.querySelector(location.hash); } catch (e) { return; }
+      if (el && el.tagName === 'DETAILS') { el.open = true; el.scrollIntoView(); }
+    }
+    window.addEventListener('hashchange', openFromHash);
+    openFromHash();
+  })();
+</script>
+</body>
+</html>
