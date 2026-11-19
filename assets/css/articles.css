@@ -1,0 +1,65 @@
+/* ШІ-майстерня — розділ «Статті» (articles.html і сторінки статей).
+   Лише токени з tokens.css; компоненти — з bundle.css і programa.css.
+   Mobile-first: базові стилі для телефона, далі @media (min-width: 768px / 1024px). */
+
+/* Пункт меню розділу на сторінці статті */
+.sm-nav a[aria-current="true"] { color: var(--primary); border-bottom-color: var(--primary); font-weight: 800; }
+
+/* ===== Герой ===== */
+.art-hero__text { display: grid; gap: var(--space-4); justify-items: start; max-width: var(--prose-max); margin-top: var(--space-4); }
+.art-lead { max-width: var(--prose-max); color: var(--ink); }
+.art-meta { display: inline-flex; align-items: center; gap: var(--space-2); margin: 0; font: 500 var(--fs-caption)/var(--lh-caption) var(--font-sans); color: var(--ink-muted); }
+.art-meta svg { width: var(--icon-sm); height: var(--icon-sm); flex: none; }
+
+/* ===== Текст статті ===== */
+.art-prose { max-width: var(--prose-max); font: 400 var(--fs-body)/var(--lh-body) var(--font-sans); color: var(--ink); }
+.art-prose > * { margin: 0; }
+.art-prose > * + * { margin-top: var(--space-4); }
+.art-prose > h2 { margin-top: var(--space-8); scroll-margin-top: var(--space-5); }
+.art-prose > h2:first-child { margin-top: 0; }
+.art-prose > h2 + * { margin-top: var(--space-3); }
+.art-prose ul, .art-prose ol { padding-left: var(--space-6); }
+.art-prose li + li { margin-top: var(--space-2); }
+.art-prose li::marker { color: var(--primary); font-weight: 700; }
+.art-prose strong { font-weight: 700; }
+.art-prose a { color: var(--primary); }
+.art-prose .sm-table-wrap { margin-top: var(--space-5); }
+.art-prose .sm-table { --table-min: 560px; }
+.art-prose .sm-table td { vertical-align: top; }
+.art-prose .sm-table tbody th { white-space: nowrap; }
+
+/* ===== Джерела ===== */
+.art-sources { display: grid; gap: var(--space-3); max-width: var(--prose-max); margin-top: var(--space-8); padding: var(--space-5); background: var(--surface-sunken); border: var(--stroke-1) solid var(--line); border-radius: var(--radius-lg); }
+.art-sources ul { display: grid; gap: var(--space-2); margin: 0; padding-left: var(--space-5); font: 400 var(--fs-body-m)/var(--lh-body-m) var(--font-sans); }
+.art-sources a { overflow-wrap: anywhere; }
+
+/* ===== Попередня / наступна ===== */
+.art-pager { display: grid; gap: var(--space-4); }
+.art-pager__link { display: grid; gap: var(--space-2); align-content: start; padding: var(--space-5); background: var(--surface); border: var(--stroke-1) solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); color: var(--ink); text-decoration: none; }
+.art-pager__link .sm-kicker svg { width: var(--icon-sm); height: var(--icon-sm); flex: none; }
+.art-pager__link--prev .sm-kicker svg { transform: scaleX(-1); }
+.art-pager__title { font: 700 var(--fs-h4)/var(--lh-h4) var(--font-display); }
+.art-pager__link:hover { border-color: var(--primary); }
+.art-pager__link:hover .art-pager__title { color: var(--primary); text-decoration: underline; text-underline-offset: var(--space-half); }
+.art-pager__link:active { transform: translateY(var(--press-nudge)); box-shadow: none; }
+.art-pager__link--next { text-align: right; justify-items: end; }
+
+/* ===== Список статей ===== */
+.art-list > li { display: flex; }
+.art-card { flex: 1; max-width: none; padding: var(--space-5); }
+.art-card .mod-num { width: var(--size-sm); height: var(--size-sm); font-size: var(--fs-body-m); margin-right: var(--space-1); }
+.art-card .mod-link { margin-top: auto; }
+
+@media (min-width: 768px) {
+  .art-pager { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .art-pager__link--next:only-child { grid-column: 2; }
+  .art-sources { padding: var(--space-6); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .art-pager__link:active { transform: none; }
+}
+
+@media print {
+  .art-pager, .art-sources a::after { display: none; }
+}
